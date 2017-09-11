@@ -1,0 +1,23 @@
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
+[roughproject1_servers:children]
+roughproject1_hybris
+roughproject1_srch
+
+[roughproject1_hybris:children]
+roughproject1-d-aws-adm-001.hybrishosting.com
+roughproject1-d-aws-app-001.hybrishosting.com
+
+[roughproject1_srch:children]
+roughproject1-d-aws-srch-001.hybrishosting.com
+
+[roughproject1-d-aws-adm-001.hybrishosting.com]
+34.203.234.123
+
+[roughproject1-d-aws-app-001.hybrishosting.com]
+52.91.55.176
+
+[roughproject1-d-aws-srch-001.hybrishosting.com]
+107.21.26.13

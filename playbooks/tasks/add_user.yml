@@ -1,0 +1,18 @@
+---
+- name: Adding group {{ user_group }}
+  group: name={{ user_group }} state=present
+  become: yes
+- name: Adding user {{ user_name }} with password {{ user_password }} in group {{ user_group }}  
+  user: name={{ user_name }}
+        group={{ user_group }}
+        shell=/bin/bash
+        groups=sudo,{{ user_group }}
+        password={{ user_password | password_hash('sha512') }}
+        append=yes
+  become: yes
+- name: configure sudoers
+  lineinfile: dest=/etc/sudoers state=present regexp={{ item.regexp }} line={{ item.line }}
+  with_items:
+      - { regexp: '^{{ user_name }}', line: '{{ user_name }}   ALL=(ALL) NOPASSWD:ALL' }
+      - { regexp: '^%{{ user_group }}', line: '%{{ user_group }}   ALL=(ALL) NOPASSWD:ALL' }
+  become: yes

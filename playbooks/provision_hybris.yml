@@ -1,0 +1,5 @@
+---
+- hosts: "{{ nodes }}"
+  remote_user: ubuntu
+  tasks:
+       - include: tasks/add_user.yml user_name="hybris" user_group="hybris" user_password="hybris"

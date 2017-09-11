@@ -1,0 +1,5 @@
+---
+- hosts: "{{ nodes }}"
+  remote_user: ubuntu
+  tasks:
+       - include: tasks/add_user.yml user_name="test5" user_group="test5" user_password="test5"
