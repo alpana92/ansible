@@ -2,6 +2,16 @@
 ansible_python_interpreter=/usr/bin/python3
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
+[projectname_servers:vars]
+repo_server=54.210.0.102
+java_version=
+java_package=
+hybris_version=
+hybris_package=
+hybris_recipe=
+solr_package=
+domain_name=
+
 [projectname_servers:children]
 projectname_hybris
 projectname_srch
