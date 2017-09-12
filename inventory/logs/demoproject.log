@@ -1,59 +1,60 @@
+nohup: ignoring input
 
-PLAY [srch] ******************************************************************************************************************************************************************************************************
+PLAY [srch] ********************************************************************
 
-TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
-ok: [54.85.154.110]
+TASK [Gathering Facts] *********************************************************
+ok: [35.196.133.7]
 
-TASK [common : Install unzip package] ****************************************************************************************************************************************************************************
-changed: [54.85.154.110]
+TASK [common : Install unzip package] ******************************************
+changed: [35.196.133.7]
 
-TASK [user : Adding group solr] **********************************************************************************************************************************************************************************
-changed: [54.85.154.110]
+TASK [user : Adding group solr] ************************************************
+changed: [35.196.133.7]
 
-TASK [user : Adding user solr with password solr in group solr] **************************************************************************************************************************************************
-changed: [54.85.154.110]
+TASK [user : Adding user solr with password solr in group solr] ****************
+changed: [35.196.133.7]
 
-TASK [user : configure sudoers] **********************************************************************************************************************************************************************************
-changed: [54.85.154.110] => (item={u'regexp': u'^solr', u'line': u'solr   ALL=(ALL) NOPASSWD:ALL'})
-changed: [54.85.154.110] => (item={u'regexp': u'^%solr', u'line': u'%solr   ALL=(ALL) NOPASSWD:ALL'})
+TASK [user : configure sudoers] ************************************************
+changed: [35.196.133.7] => (item={u'regexp': u'^solr', u'line': u'solr   ALL=(ALL) NOPASSWD:ALL'})
+changed: [35.196.133.7] => (item={u'regexp': u'^%solr', u'line': u'%solr   ALL=(ALL) NOPASSWD:ALL'})
 
-TASK [jdk : Download java package] *******************************************************************************************************************************************************************************
-changed: [54.85.154.110]
+TASK [jdk : Download java package] *********************************************
+changed: [35.196.133.7]
 
-TASK [jdk : Make java home directory] ****************************************************************************************************************************************************************************
-changed: [54.85.154.110]
+TASK [jdk : Make java home directory] ******************************************
+changed: [35.196.133.7]
 
-TASK [jdk : Extract jdk in Java Home directoy] *******************************************************************************************************************************************************************
-changed: [54.85.154.110]
+TASK [jdk : Extract jdk in Java Home directoy] *********************************
+changed: [35.196.133.7]
 
-TASK [jdk : Alternatives java link created] **********************************************************************************************************************************************************************
-changed: [54.85.154.110]
+TASK [jdk : Alternatives java link created] ************************************
+changed: [35.196.133.7]
 
-TASK [jdk : Alternatives javac link created] *********************************************************************************************************************************************************************
-changed: [54.85.154.110]
+TASK [jdk : Alternatives javac link created] ***********************************
+changed: [35.196.133.7]
 
-TASK [jdk : Check Java is installed] *****************************************************************************************************************************************************************************
-changed: [54.85.154.110]
+TASK [jdk : Check Java is installed] *******************************************
+changed: [35.196.133.7]
 
-TASK [jdk : Stop further if java is not installed] ***************************************************************************************************************************************************************
-skipping: [54.85.154.110]
+TASK [jdk : Stop further if java is not installed] *****************************
+skipping: [35.196.133.7]
 
-TASK [jdk : set java home] ***************************************************************************************************************************************************************************************
-changed: [54.85.154.110] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [54.85.154.110] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [54.85.154.110] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [54.85.154.110] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [54.85.154.110] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [54.85.154.110] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+TASK [jdk : set java home] *****************************************************
+changed: [35.196.133.7] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.133.7] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.133.7] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.133.7] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.133.7] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.133.7] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
 
-TASK [jdk : source the environment] ******************************************************************************************************************************************************************************
-changed: [54.85.154.110] => (item=. /etc/environment)
-changed: [54.85.154.110] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
-changed: [54.85.154.110] => (item=export PATH=$(dirname $(dirname $(readlink -f $(which java))))/bin:$PATH)
+TASK [jdk : source the environment] ********************************************
+changed: [35.196.133.7] => (item=. /etc/environment)
+changed: [35.196.133.7] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
+changed: [35.196.133.7] => (item=export PATH=$(dirname $(dirname $(readlink -f $(which java))))/bin:$PATH)
 
-TASK [solr : Download Solr Package] ******************************************************************************************************************************************************************************
-changed: [54.85.154.110]
+TASK [solr : Download Solr Package] ********************************************
+changed: [35.196.133.7]
 
-PLAY RECAP *******************************************************************************************************************************************************************************************************
-54.85.154.110              : ok=14   changed=13   unreachable=0    failed=0   
+PLAY RECAP *********************************************************************
+35.196.133.7               : ok=14   changed=13   unreachable=0    failed=0   
 

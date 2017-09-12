@@ -36,7 +36,10 @@
       - hybris_set_home
 
 - name: install the recipe
-  shell: "{{ hybris_symlink }}/installer/install.sh -r {{ hybris_recipe }}"
+  shell: "{{ item }}"
   become_user: hybris
+  with_items:
+            - '{{ hybris_symlink }}/installer/install.sh -r {{ hybris_recipe }}'
+            - 'chmod -R 775 {{ hybris_dir }}; chown -R hybris:hybris {{ hybris_dir }}'
   tags:
       - hybris_install_recipe

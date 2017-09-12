@@ -12,6 +12,7 @@ hybris_recipe=
 solr_package=
 db_driver=
 domain_name=
+inventory_path=/opt/ansible/inventory/
 
 [servers:children]
 adm

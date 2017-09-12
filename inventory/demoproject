@@ -19,19 +19,19 @@ app
 srch
 
 [adm:children]
-demoproject-d-aws-adm-001.hybrishosting.com
+demoproject-d-gce-adm-001.hybrishosting.com
 
 [app:children]
-demoproject-d-aws-app-001.hybrishosting.com
+demoproject-d-gce-app-001.hybrishosting.com
 
 [srch:children]
-demoproject-d-aws-srch-001.hybrishosting.com
+demoproject-d-gce-srch-001.hybrishosting.com
 
-[demoproject-d-aws-adm-001.hybrishosting.com]
-34.228.40.76
+[demoproject-d-gce-adm-001.hybrishosting.com]
+35.196.252.148
 
-[demoproject-d-aws-app-001.hybrishosting.com]
-54.226.92.225
+[demoproject-d-gce-app-001.hybrishosting.com]
+35.196.34.57
 
-[demoproject-d-aws-srch-001.hybrishosting.com]
-54.85.154.110
+[demoproject-d-gce-srch-001.hybrishosting.com]
+35.196.133.7
