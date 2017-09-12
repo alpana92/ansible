@@ -1,0 +1,47 @@
+---
+- name: Set MySQL root password before installing
+  debconf: name='mysql-server' question='mysql-server/root_password' vtype='password' value={{ root_password | quote }}
+  tags:
+      - mysql_set_root_password
+      - mysql
+
+- shell: export DEBIAN_FRONTEND="noninteractive"
+  tags:
+      - mysql
+
+- name: Confirm MySQL root password before installing
+  debconf: name='mysql-server' question='mysql-server/root_password_again' vtype='password' value={{ root_password | quote }}
+  tags:
+      - mysql_set_root_password
+      - mysql
+
+- name: Install MySQL
+  apt: package={{ item }} state=latest force=yes update_cache=yes
+  with_items:
+      - python-mysqldb
+      - mysql-server-5.7
+  tags:
+      - mysql_install
+      - mysql
+
+- name: Change bind-address configuration
+  lineinfile: path=/etc/mysql/mysql.conf.d/mysqld.cnf regexp={{ item.regexp }} line={{ item.line }} owner=root group=root mode=0644 state=present
+  with_items:
+            - { regexp: '^bind-address', line: 'bind-address = {{ bind_address }}' }
+  tags:
+      - mysql_config
+      - mysql
+
+- name: Copy hybris db config template file
+  template: src=hybrisdb.sql  dest=/opt/hybrisdb.sql owner=root group=root mode=0775
+  tags:
+      - mysql_hybris_config
+      - mysql
+
+- name: Create hybris db with hybris user
+  shell: mysql -u root -proot < /opt/hybrisdb.sql
+  notify:
+        - Restart MySql
+  tags:
+      - mysql_hybris_config
+      - mysql

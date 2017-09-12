@@ -1,0 +1,8 @@
+---
+- hosts: db
+  remote_user: ubuntu
+  become: yes
+  roles:
+       - mysql
+  tags:
+      - mysql

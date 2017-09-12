@@ -17,6 +17,7 @@ domain_name=www.demoproject.com
 adm
 app
 srch
+db
 
 [adm:children]
 demoproject-d-gce-adm-001.hybrishosting.com
@@ -27,11 +28,17 @@ demoproject-d-gce-app-001.hybrishosting.com
 [srch:children]
 demoproject-d-gce-srch-001.hybrishosting.com
 
+[db:children]
+demoproject-d-gce-db-001.hybrishosting.com
+
 [demoproject-d-gce-adm-001.hybrishosting.com]
-35.196.252.148
+35.196.133.7
 
 [demoproject-d-gce-app-001.hybrishosting.com]
-35.196.34.57
+35.196.67.115
 
 [demoproject-d-gce-srch-001.hybrishosting.com]
-35.196.133.7
+35.196.34.57
+
+[demoproject-d-gce-db-001.hybrishosting.com]
+35.196.34.57
