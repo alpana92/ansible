@@ -1,0 +1,36 @@
+---
+- name: Download Hybris Package
+  get_url: url=http://{{ repo_server }}/hybris-packages/{{ hybris_package }} dest=/tmp
+  tags:
+      - hybris_download
+
+- name: Make Hybris directory
+  file: path={{ hybris_dir }} state=directory owner=hybris group=hybris mode=0775 recurse=yes
+  tags:
+      - hybris_make_dir
+
+- name: Make hybris symlink
+  file: src={{ hybris_dir }} dest={{ hybris_symlink }} state=link owner=hybris group=hybris mode=0775
+  tags:
+      - hybris_make_link
+
+- name: Extract hybris in Hybris directoy
+  unarchive: src=/tmp/{{ hybris_package }} dest={{ hybris_dir }} copy=no owner=hybris group=hybris mode=0775
+  tags:
+      - hybris_extract
+
+- name: set hybris home
+  lineinfile: dest={{ item.0 }} state=present regexp={{ item.1.regexp }} line={{ item.1.line }} create=yes
+  with_nested:
+      - [ '/etc/environment', '/etc/profile', '/etc/profile.d/hybris.sh' ]
+      - [ { regexp: '^HYBRIS_HOME=', line: 'HYBRIS_HOME={{ hybris_home }}' } ]
+  tags:
+      - hybris_set_home
+
+- name: source the environment
+  shell: "{{ item }}"
+  with_items:
+            - . /etc/environment
+            - export HYBRIS_HOME={{ hybris_home }}
+  tags:
+      - hybris_set_home

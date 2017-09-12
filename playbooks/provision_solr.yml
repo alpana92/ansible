@@ -1,5 +1,0 @@
----
-- hosts: "{{ nodes }}"
-  remote_user: ubuntu
-  tasks:
-       - include: tasks/add_user.yml user_name="solr" user_group="solr" user_password="solr"

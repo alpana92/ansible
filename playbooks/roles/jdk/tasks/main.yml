@@ -1,0 +1,54 @@
+---
+- name: Download java package
+  get_url: url=http://{{ repo_server }}/java-packages/{{ java_package }} dest=/tmp
+  tags:
+      - jdk_download
+
+- name: Make java home directory
+  file: path={{ java_home }} state=directory owner=root group=root mode=0775 recurse=yes
+  tags:
+      - jdk_make_home
+
+- name: Extract jdk in Java Home directoy
+  unarchive: src=/tmp/{{ java_package }} dest={{ java_home }} extra_opts="--strip-components=1" copy=no owner=root group=root mode=0775
+  tags:
+      - jdk_extract
+
+- name: Alternatives java link created
+  alternatives: name=java link={{ java_symlink }} path={{ java_home }}/bin/java priority=100
+  tags:
+      - jdk_link
+
+- name: Alternatives javac link created
+  alternatives: name=javac link={{ javac_symlink }} path={{ java_home }}/bin/javac priority=100
+  tags:
+      - jdk_link
+
+- name: Check Java is installed
+  shell: java -version
+  register: installed_java
+  tags:
+      - jdk_check
+
+- name: Stop further if java is not installed
+  fail: msg="Java does not exist"
+  when: installed_java.rc != 0
+  tags:
+      - jdk_check
+
+- name: set java home
+  lineinfile: dest={{ item.0 }} state=present regexp={{ item.1.regexp }} line={{ item.1.line }} create=yes
+  with_nested:
+      - [ '/etc/environment', '/etc/profile', '/etc/profile.d/java.sh' ]
+      - [ { regexp: '^JAVA_HOME=', line: 'JAVA_HOME={{ java_home }}' }, { regexp: '^PATH=', line: 'PATH={{ ansible_env.PATH }}:{{ java_home }}' } ]
+  tags:
+      - jdk_set_home
+
+- name: source the environment
+  shell: "{{ item }}"
+  with_items:
+            - . /etc/environment
+            - export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+            - export PATH=$(dirname $(dirname $(readlink -f $(which java))))/bin:$PATH
+  tags:
+      - jdk_set_home

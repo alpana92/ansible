@@ -1,0 +1,8 @@
+---
+- hosts: srch
+  remote_user: ubuntu
+  become: yes
+  roles:
+       - solr
+  tags:
+      - solr

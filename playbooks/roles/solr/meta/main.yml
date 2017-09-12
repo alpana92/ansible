@@ -1,0 +1,5 @@
+---
+dependencies:
+- { role: common }
+- { role: user, user_name: 'solr', user_group: 'solr', user_password: 'solr' }
+- { role: jdk }

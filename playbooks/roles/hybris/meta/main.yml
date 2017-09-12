@@ -1,0 +1,5 @@
+---
+dependencies:
+- { role: common }
+- { role: user, user_name: 'hybris', user_group: 'hybris', user_password: 'hybris' }
+- { role: jdk }

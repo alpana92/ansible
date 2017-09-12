@@ -1,0 +1,5 @@
+---
+- name: Download Solr Package
+  get_url: url=http://{{ repo_server }}/solr-packages/{{ solr_package }} dest=/tmp
+  tags:
+      - solr

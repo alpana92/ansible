@@ -2,7 +2,7 @@
 ansible_python_interpreter=/usr/bin/python3
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
-[projectname_servers:vars]
+[servers:vars]
 repo_server=54.210.0.102
 java_version=
 java_package=
@@ -10,25 +10,29 @@ hybris_version=
 hybris_package=
 hybris_recipe=
 solr_package=
+db_driver=
 domain_name=
 
-[projectname_servers:children]
-projectname_hybris
-projectname_srch
-projectname_web
-projectname_db
+[servers:children]
+adm
+app
+srch
+web
+db
 
-[projectname_hybris:children]
+[adm:children]
 projectname-d-provider-adm-001.hybrishosting.com
+
+[app:children]
 projectname-d-provider-app-001.hybrishosting.com
 
-[projectname_srch:children]
+[srch:children]
 projectname-d-provider-srch-001.hybrishosting.com
 
-[projectname_web:children]
+[web:children]
 projectname-d-provider-web-001.hybrishosting.com
 
-[projectname_db:children]
+[db:children]
 projectname-d-provider-db-001.hybrishosting.com
 
 [projectname-d-provider-adm-001.hybrishosting.com]

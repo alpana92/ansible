@@ -1,0 +1,3 @@
+hybris_dir: /opt/{{ hybris_version }}
+hybris_home: /opt/{{ hybris_version }}/hybris
+hybris_symlink: /opt/hybris

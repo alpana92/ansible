@@ -1,0 +1,4 @@
+java_home: /usr/lib/jvm/{{ java_version }}
+java_symlink: /usr/bin/java
+javac_symlink: /usr/bin/javac
+environment_file: /etc/environment
