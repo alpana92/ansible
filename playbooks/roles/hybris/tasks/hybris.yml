@@ -34,3 +34,9 @@
             - export HYBRIS_HOME={{ hybris_home }}
   tags:
       - hybris_set_home
+
+- name: install the recipe
+  shell: "{{ hybris_symlink }}/installer/install.sh -r {{ hybris_recipe }}"
+  become_user: hybris
+  tags:
+      - hybris_install_recipe
