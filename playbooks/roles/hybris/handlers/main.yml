@@ -1,0 +1,8 @@
+- name: Restart Hybris
+  action: service name=hybris state=restarted
+
+- name: Start Hybris
+  action: service name=hybris state=started
+
+- name: Stop Hybris
+  action: service name=hybris state=stopped

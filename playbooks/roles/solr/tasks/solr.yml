@@ -36,7 +36,12 @@
       - solr
 
 - name: Reload solr service configs
-  systemd: daemon_reload=yes name=solr state=started enabled=True
+  shell: '{{ item }}'
+  with_items:
+            - systemctl daemon-reload
+            - systemctl enable /lib/systemd/system/solr.service
+  notify:
+        - Restart solr
   tags:
       - solr_service
       - solr
