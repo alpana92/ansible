@@ -4,3 +4,39 @@
   tags:
       - solr_download
       - solr
+
+- name: Make Solr directory
+  file: path={{ solr_dir }} state=directory owner=solr group=solr mode=0775 recurse=yes
+  tags:
+      - solr_directory
+      - solr
+
+- name: Extract solr package
+  unarchive: src=/tmp/{{ solr_package }} dest={{ solr_dir }} copy=no extra_opts="--strip-components=1" owner=solr group=solr mode=0775
+  tags:
+      - solr_extract
+      - solr
+
+- name: Make solr symlink
+  file: src={{ solr_dir }} dest={{ solr_symlink }} state=link owner=solr group=solr mode=0775
+  tags:
+      - solr_symlink
+      - solr
+
+- name: Create solr init script
+  file: src={{ solr_script }} dest=/etc/init.d/solr state=link owner=solr group=solr mode=0775
+  tags:
+      - solr_init_script
+      - solr
+
+- name: Copy the solr service template
+  template: src=solr.service  dest=/lib/systemd/system/solr.service owner=root group=root mode=0775
+  tags:
+      - solr_service
+      - solr
+
+- name: Reload solr service configs
+  systemd: daemon_reload=yes name=solr state=started enabled=True
+  tags:
+      - solr_service
+      - solr

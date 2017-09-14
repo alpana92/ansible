@@ -1,0 +1,15 @@
+[Unit]
+Description=solr
+After=network.target
+
+[Service]
+WorkingDirectory={{ solr_dir }}
+Type=oneshot
+ExecStart={{ solr_script }} start
+ExecStop={{ solr_script }} stop
+RemainAfterExit=yes
+User=solr
+Group=solr
+
+[Install]
+WantedBy=multi-user.target

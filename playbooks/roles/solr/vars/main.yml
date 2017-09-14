@@ -1,1 +1,3 @@
 solr_symlink: /opt/solr
+solr_dir: /opt/{{ solr_package | regex_replace('.tgz') }}
+solr_script: '{{ solr_dir }}/bin/solr'

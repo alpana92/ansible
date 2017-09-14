@@ -20,25 +20,25 @@ srch
 db
 
 [adm:children]
-demoproject-d-gce-adm-001.hybrishosting.com
+demoproject-d-aws-adm-001.hybrishosting.com
 
 [app:children]
-demoproject-d-gce-app-001.hybrishosting.com
+demoproject-d-aws-app-001.hybrishosting.com
 
 [srch:children]
-demoproject-d-gce-srch-001.hybrishosting.com
+demoproject-d-aws-srch-001.hybrishosting.com
 
 [db:children]
-demoproject-d-gce-db-001.hybrishosting.com
+demoproject-d-aws-db-001.hybrishosting.com
 
-[demoproject-d-gce-adm-001.hybrishosting.com]
-35.196.82.44
+[demoproject-d-aws-adm-001.hybrishosting.com]
+204.236.199.129
 
-[demoproject-d-gce-app-001.hybrishosting.com]
-104.196.56.147
+[demoproject-d-aws-app-001.hybrishosting.com]
+54.145.18.190
 
-[demoproject-d-gce-srch-001.hybrishosting.com]
-35.196.215.102
+[demoproject-d-aws-srch-001.hybrishosting.com]
+52.207.148.126
 
-[demoproject-d-gce-db-001.hybrishosting.com]
-35.196.215.102
+[demoproject-d-aws-db-001.hybrishosting.com]
+54.174.174.78
