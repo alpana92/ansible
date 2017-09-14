@@ -1,0 +1,24 @@
+---
+- name: Install apache2
+  apt: package=apache2 state=installed force=yes update_cache=yes
+  tags:
+      - apache2_install
+      - apache2
+
+- name: Enable required apache2 modules
+  apache2_module: state=present name={{ item }}
+  with_items:
+            - proxy
+            - proxy_ajp
+            - proxy_balancer
+            - proxy_http
+            - lbmethod_byrequests
+            - setenvif
+            - mime
+            - socache_shmcb
+            - ssl
+  notify:
+        - Restart apache2
+  tags:
+      - apache2_enable_mods
+      - apache2
