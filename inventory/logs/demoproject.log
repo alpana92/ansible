@@ -1,491 +1,316 @@
-nohup: ignoring input
 
-PLAY [db] **********************************************************************
+PLAY [adm,app] ***************************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+ok: [35.196.82.44]
+ok: [104.196.56.147]
+
+TASK [common : Install unzip package] ****************************************************************************************************************************************************************************
+changed: [35.196.82.44]
+changed: [104.196.56.147]
+
+TASK [user : Adding group hybris] ********************************************************************************************************************************************************************************
+changed: [35.196.82.44]
+changed: [104.196.56.147]
+
+TASK [user : Adding user hybris with password hybris in group hybris] ********************************************************************************************************************************************
+changed: [35.196.82.44]
+changed: [104.196.56.147]
+
+TASK [user : configure sudoers] **********************************************************************************************************************************************************************************
+changed: [35.196.82.44] => (item={u'regexp': u'^hybris', u'line': u'hybris   ALL=(ALL) NOPASSWD:ALL'})
+changed: [104.196.56.147] => (item={u'regexp': u'^hybris', u'line': u'hybris   ALL=(ALL) NOPASSWD:ALL'})
+changed: [35.196.82.44] => (item={u'regexp': u'^%hybris', u'line': u'%hybris   ALL=(ALL) NOPASSWD:ALL'})
+changed: [104.196.56.147] => (item={u'regexp': u'^%hybris', u'line': u'%hybris   ALL=(ALL) NOPASSWD:ALL'})
+
+TASK [jdk : Download java package] *******************************************************************************************************************************************************************************
+changed: [104.196.56.147]
+changed: [35.196.82.44]
+
+TASK [jdk : Make java home directory] ****************************************************************************************************************************************************************************
+changed: [35.196.82.44]
+changed: [104.196.56.147]
+
+TASK [jdk : Extract jdk in Java Home directoy] *******************************************************************************************************************************************************************
+changed: [35.196.82.44]
+changed: [104.196.56.147]
+
+TASK [jdk : Alternatives java link created] **********************************************************************************************************************************************************************
+changed: [104.196.56.147]
+changed: [35.196.82.44]
+
+TASK [jdk : Alternatives javac link created] *********************************************************************************************************************************************************************
+changed: [35.196.82.44]
+changed: [104.196.56.147]
+
+TASK [jdk : Check Java is installed] *****************************************************************************************************************************************************************************
+changed: [35.196.82.44]
+changed: [104.196.56.147]
+
+TASK [jdk : Stop further if java is not installed] ***************************************************************************************************************************************************************
+skipping: [35.196.82.44]
+skipping: [104.196.56.147]
+
+TASK [jdk : set java home] ***************************************************************************************************************************************************************************************
+changed: [35.196.82.44] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [104.196.56.147] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.82.44] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [104.196.56.147] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.82.44] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [104.196.56.147] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.82.44] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [104.196.56.147] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [104.196.56.147] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.82.44] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [104.196.56.147] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.82.44] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+
+TASK [jdk : source the environment] ******************************************************************************************************************************************************************************
+changed: [104.196.56.147] => (item=. /etc/environment)
+changed: [35.196.82.44] => (item=. /etc/environment)
+changed: [104.196.56.147] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
+changed: [35.196.82.44] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
+changed: [104.196.56.147] => (item=export PATH=$(dirname $(dirname $(readlink -f $(which java))))/bin:$PATH)
+changed: [35.196.82.44] => (item=export PATH=$(dirname $(dirname $(readlink -f $(which java))))/bin:$PATH)
+
+TASK [hybris : Download Hybris Package] **************************************************************************************************************************************************************************
+changed: [104.196.56.147]
+changed: [35.196.82.44]
+
+TASK [hybris : Make Hybris directory] ****************************************************************************************************************************************************************************
+changed: [104.196.56.147]
+changed: [35.196.82.44]
+
+TASK [hybris : Make hybris symlink] ******************************************************************************************************************************************************************************
+changed: [35.196.82.44]
+changed: [104.196.56.147]
 
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
+TASK [hybris : Extract hybris in Hybris directoy] ****************************************************************************************************************************************************************
+changed: [104.196.56.147]
+changed: [35.196.82.44]
 
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
+TASK [hybris : set hybris home] **********************************************************************************************************************************************************************************
+changed: [104.196.56.147] => (item=[u'/etc/environment', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.3.0/hybris'}])
+changed: [35.196.82.44] => (item=[u'/etc/environment', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.3.0/hybris'}])
+changed: [104.196.56.147] => (item=[u'/etc/profile', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.3.0/hybris'}])
+changed: [35.196.82.44] => (item=[u'/etc/profile', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.3.0/hybris'}])
+changed: [104.196.56.147] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.3.0/hybris'}])
+changed: [35.196.82.44] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.3.0/hybris'}])
 
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
+TASK [hybris : source the environment] ***************************************************************************************************************************************************************************
+changed: [35.196.82.44] => (item=. /etc/environment)
+changed: [104.196.56.147] => (item=. /etc/environment)
+changed: [35.196.82.44] => (item=export HYBRIS_HOME=/opt/Hybris-6.3.0/hybris)
+changed: [104.196.56.147] => (item=export HYBRIS_HOME=/opt/Hybris-6.3.0/hybris)
 
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
+TASK [hybris : install the recipe] *******************************************************************************************************************************************************************************
+changed: [35.196.82.44] => (item=/opt/hybris/installer/install.sh -r b2b_acc)
+changed: [104.196.56.147] => (item=/opt/hybris/installer/install.sh -r b2b_acc)
+changed: [35.196.82.44] => (item=chmod -R 775 /opt/Hybris-6.3.0; chown -R hybris:hybris /opt/Hybris-6.3.0)
+changed: [104.196.56.147] => (item=chmod -R 775 /opt/Hybris-6.3.0; chown -R hybris:hybris /opt/Hybris-6.3.0)
 
-TASK [mysql : Install MySQL] ***************************************************
-changed: [35.196.252.148] => (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server', u'mysql-client', u'build-essential', u'python3-pip', u'python3-dev'])
+PLAY RECAP *******************************************************************************************************************************************************************************************************
+104.196.56.147             : ok=20   changed=19   unreachable=0    failed=0   
+35.196.82.44               : ok=20   changed=19   unreachable=0    failed=0   
 
-TASK [mysql : Install the Python package required for ansible MySQL modules] ***
-failed: [35.196.252.148] (item=MySQL-python) => {"cmd": "/usr/bin/pip3 install -U --force-reinstall MySQL-python", "failed": true, "item": "MySQL-python", "msg": "stdout: Collecting MySQL-python\n  Downloading MySQL-python-1.2.5.zip (108kB)\n    Complete output from command python setup.py egg_info:\n    Traceback (most recent call last):\n      File \"<string>\", line 1, in <module>\n      File \"/tmp/pip-build-9j38qd1m/MySQL-python/setup.py\", line 13, in <module>\n        from setup_posix import get_config\n      File \"/tmp/pip-build-9j38qd1m/MySQL-python/setup_posix.py\", line 2, in <module>\n        from ConfigParser import SafeConfigParser\n    ImportError: No module named 'ConfigParser'\n    \n    ----------------------------------------\n\n:stderr: Command \"python setup.py egg_info\" failed with error code 1 in /tmp/pip-build-9j38qd1m/MySQL-python/\nYou are using pip version 8.1.1, however version 9.0.1 is available.\nYou should consider upgrading via the 'pip install --upgrade pip' command.\n"}
-changed: [35.196.252.148] => (item=mysqlclient)
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
 
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=5    changed=4    unreachable=0    failed=1   
+PLAY [srch] ******************************************************************************************************************************************************************************************************
 
-nohup: ignoring input
+TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+ok: [35.196.215.102]
 
-PLAY [db] **********************************************************************
+TASK [common : Install unzip package] ****************************************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
+TASK [user : Adding group solr] **********************************************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
+TASK [user : Adding user solr with password solr in group solr] **************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
+TASK [user : configure sudoers] **********************************************************************************************************************************************************************************
+changed: [35.196.215.102] => (item={u'regexp': u'^solr', u'line': u'solr   ALL=(ALL) NOPASSWD:ALL'})
+changed: [35.196.215.102] => (item={u'regexp': u'^%solr', u'line': u'%solr   ALL=(ALL) NOPASSWD:ALL'})
 
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
+TASK [jdk : Download java package] *******************************************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-TASK [mysql : Install MySQL] ***************************************************
-ok: [35.196.252.148] => (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server', u'mysql-client', u'build-essential', u'python3-pip', u'python3-dev'])
+TASK [jdk : Make java home directory] ****************************************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-TASK [mysql : Install the Python package required for ansible MySQL modules] ***
-changed: [35.196.252.148] => (item=mysqlclient)
+TASK [jdk : Extract jdk in Java Home directoy] *******************************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-TASK [mysql : Change bind-address configuration] *******************************
-changed: [35.196.252.148] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
+TASK [jdk : Alternatives java link created] **********************************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-TASK [mysql : Create hybris database] ******************************************
-fatal: [35.196.252.148]: FAILED! => {"changed": false, "failed": true, "msg": "unable to find /root/.my.cnf. Exception message: (1045, \"Access denied for user 'root'@'localhost' (using password: NO)\")"}
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
+TASK [jdk : Alternatives javac link created] *********************************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=7    changed=5    unreachable=0    failed=1   
+TASK [jdk : Check Java is installed] *****************************************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-nohup: ignoring input
+TASK [jdk : Stop further if java is not installed] ***************************************************************************************************************************************************************
+skipping: [35.196.215.102]
 
-PLAY [db] **********************************************************************
+TASK [jdk : set java home] ***************************************************************************************************************************************************************************************
+changed: [35.196.215.102] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.215.102] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.215.102] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.215.102] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.215.102] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [35.196.215.102] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
 
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
+TASK [jdk : source the environment] ******************************************************************************************************************************************************************************
+changed: [35.196.215.102] => (item=. /etc/environment)
+changed: [35.196.215.102] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
+changed: [35.196.215.102] => (item=export PATH=$(dirname $(dirname $(readlink -f $(which java))))/bin:$PATH)
 
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
+TASK [solr : Download Solr Package] ******************************************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
+PLAY RECAP *******************************************************************************************************************************************************************************************************
+35.196.215.102             : ok=14   changed=13   unreachable=0    failed=0   
 
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
 
-TASK [mysql : Install MySQL] ***************************************************
-ok: [35.196.252.148] => (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server', u'mysql-client', u'build-essential', u'python3-pip', u'python3-dev'])
+PLAY [db] ********************************************************************************************************************************************************************************************************
 
-TASK [mysql : Change bind-address configuration] *******************************
-ok: [35.196.252.148] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
+TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+ok: [35.196.128.2]
 
-TASK [mysql : Create hybris database] ******************************************
-fatal: [35.196.252.148]: FAILED! => {"changed": false, "failed": true, "msg": "unable to find /root/.my.cnf. Exception message: (1045, \"Access denied for user 'root'@'localhost' (using password: NO)\")"}
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
+TASK [mysql : Set MySQL root password before installing] *********************************************************************************************************************************************************
+changed: [35.196.128.2]
 
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=6    changed=3    unreachable=0    failed=1   
+TASK [mysql : command] *******************************************************************************************************************************************************************************************
+changed: [35.196.128.2]
 
-nohup: ignoring input
+TASK [mysql : Confirm MySQL root password before installing] *****************************************************************************************************************************************************
+changed: [35.196.128.2]
 
-PLAY [db] **********************************************************************
+TASK [mysql : Install MySQL] *************************************************************************************************************************************************************************************
+changed: [35.196.128.2] => (item=[u'python-mysqldb', u'mysql-server-5.7'])
 
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
+TASK [mysql : Change bind-address configuration] *****************************************************************************************************************************************************************
+changed: [35.196.128.2] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
 
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
+TASK [mysql : Copy hybris db config template file] ***************************************************************************************************************************************************************
+changed: [35.196.128.2]
 
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
+TASK [mysql : Create hybris db with hybris user] *****************************************************************************************************************************************************************
+changed: [35.196.128.2]
 
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
+TASK [mysql : Ignore errors when hybris DB already exists] *******************************************************************************************************************************************************
+skipping: [35.196.128.2]
 
-TASK [mysql : Install MySQL] ***************************************************
-ok: [35.196.252.148] => (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server-5.7', u'mysql-client', u'build-essential', u'python3-pip', u'python3-dev'])
+RUNNING HANDLER [mysql : Restart MySql] **************************************************************************************************************************************************************************
+changed: [35.196.128.2]
 
-TASK [mysql : Change bind-address configuration] *******************************
-ok: [35.196.252.148] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
+PLAY RECAP *******************************************************************************************************************************************************************************************************
+35.196.128.2               : ok=9    changed=8    unreachable=0    failed=0   
 
-TASK [mysql : Create hybris database] ******************************************
-fatal: [35.196.252.148]: FAILED! => {"changed": false, "failed": true, "msg": "unable to find /root/.my.cnf. Exception message: (1045, \"Access denied for user 'root'@'localhost' (using password: NO)\")"}
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
 
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=6    changed=3    unreachable=0    failed=1   
+PLAY [db] ********************************************************************************************************************************************************************************************************
 
-nohup: ignoring input
+TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+ok: [35.196.128.2]
 
-PLAY [db] **********************************************************************
+TASK [mysql : Set MySQL root password before installing] *********************************************************************************************************************************************************
+changed: [35.196.128.2]
 
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
+TASK [mysql : command] *******************************************************************************************************************************************************************************************
+changed: [35.196.128.2]
 
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
+TASK [mysql : Confirm MySQL root password before installing] *****************************************************************************************************************************************************
+changed: [35.196.128.2]
 
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
+TASK [mysql : Install MySQL] *************************************************************************************************************************************************************************************
+ok: [35.196.128.2] => (item=[u'python-mysqldb', u'mysql-server-5.7'])
 
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
+TASK [mysql : Change bind-address configuration] *****************************************************************************************************************************************************************
+ok: [35.196.128.2] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
 
-TASK [mysql : Install MySQL] ***************************************************
-ok: [35.196.252.148] => (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server-5.7', u'mysql-client', u'build-essential', u'python3-pip', u'python3-dev'])
+TASK [mysql : Copy hybris db config template file] ***************************************************************************************************************************************************************
+ok: [35.196.128.2]
 
-TASK [mysql : Change bind-address configuration] *******************************
-ok: [35.196.252.148] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
+TASK [mysql : Create hybris db with hybris user] *****************************************************************************************************************************************************************
+fatal: [35.196.128.2]: FAILED! => {"changed": true, "cmd": "mysql -u root -proot < /opt/hybrisdb.sql", "delta": "0:00:00.005804", "end": "2017-09-14 08:47:28.922335", "failed": true, "rc": 1, "start": "2017-09-14 08:47:28.916531", "stderr": "mysql: [Warning] Using a password on the command line interface can be insecure.\nERROR 1007 (HY000) at line 1: Can't create database 'hybris'; database exists", "stderr_lines": ["mysql: [Warning] Using a password on the command line interface can be insecure.", "ERROR 1007 (HY000) at line 1: Can't create database 'hybris'; database exists"], "stdout": "", "stdout_lines": []}
+...ignoring
 
-TASK [mysql : Create hybris database] ******************************************
-fatal: [35.196.252.148]: FAILED! => {"changed": false, "failed": true, "msg": "unable to find /root/.my.cnf. Exception message: (1045, \"Access denied for user 'root'@'localhost' (using password: NO)\")"}
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
+TASK [mysql : Ignore errors when hybris DB already exists] *******************************************************************************************************************************************************
+skipping: [35.196.128.2]
 
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=6    changed=3    unreachable=0    failed=1   
+PLAY RECAP *******************************************************************************************************************************************************************************************************
+35.196.128.2               : ok=8    changed=4    unreachable=0    failed=0   
 
-nohup: ignoring input
 
-PLAY [db] **********************************************************************
+PLAY [db] ********************************************************************************************************************************************************************************************************
 
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
+TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+ok: [35.196.128.2]
 
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
+TASK [mysql : Set MySQL root password before installing] *********************************************************************************************************************************************************
+changed: [35.196.128.2]
 
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
+TASK [mysql : command] *******************************************************************************************************************************************************************************************
+changed: [35.196.128.2]
 
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
+TASK [mysql : Confirm MySQL root password before installing] *****************************************************************************************************************************************************
+changed: [35.196.128.2]
 
-TASK [mysql : Install MySQL] ***************************************************
-ok: [35.196.252.148] => (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server-5.7', u'mysql-client', u'build-essential', u'python3-pip', u'python3-dev'])
+TASK [mysql : Install MySQL] *************************************************************************************************************************************************************************************
+ok: [35.196.128.2] => (item=[u'python-mysqldb', u'mysql-server-5.7'])
 
-TASK [mysql : Change bind-address configuration] *******************************
-ok: [35.196.252.148] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
+TASK [mysql : Change bind-address configuration] *****************************************************************************************************************************************************************
+ok: [35.196.128.2] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
 
-TASK [mysql : Create hybris database] ******************************************
-changed: [35.196.252.148]
+TASK [mysql : Copy hybris db config template file] ***************************************************************************************************************************************************************
+ok: [35.196.128.2]
 
-TASK [mysql : Create hybris database user] *************************************
-fatal: [35.196.252.148]: FAILED! => {"changed": false, "failed": true, "msg": "unable to connect to database, check login_user and login_password are correct or /root/.my.cnf has the credentials. Exception message: (1045, \"Access denied for user 'root'@'localhost' (using password: NO)\")"}
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
+TASK [mysql : Create hybris db with hybris user] *****************************************************************************************************************************************************************
+fatal: [35.196.128.2]: FAILED! => {"changed": true, "cmd": "mysql -u root -proot < /opt/hybrisdb.sql", "delta": "0:00:00.005180", "end": "2017-09-14 08:48:29.509245", "failed": true, "rc": 1, "start": "2017-09-14 08:48:29.504065", "stderr": "mysql: [Warning] Using a password on the command line interface can be insecure.\nERROR 1007 (HY000) at line 1: Can't create database 'hybris'; database exists", "stderr_lines": ["mysql: [Warning] Using a password on the command line interface can be insecure.", "ERROR 1007 (HY000) at line 1: Can't create database 'hybris'; database exists"], "stdout": "", "stdout_lines": []}
+...ignoring
 
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=7    changed=4    unreachable=0    failed=1   
+TASK [mysql : Ignore errors when hybris DB already exists] *******************************************************************************************************************************************************
+ok: [35.196.128.2] => {
+    "msg": "hybris database already exists, safely ignore the errors"
+}
 
-nohup: ignoring input
+PLAY RECAP *******************************************************************************************************************************************************************************************************
+35.196.128.2               : ok=9    changed=4    unreachable=0    failed=0   
 
-PLAY [db] **********************************************************************
 
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
+PLAY [db] ********************************************************************************************************************************************************************************************************
 
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
+TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+ok: [35.196.215.102]
 
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
+TASK [mysql : Set MySQL root password before installing] *********************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
+TASK [mysql : command] *******************************************************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-TASK [mysql : Install MySQL] ***************************************************
-ok: [35.196.252.148] => (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server-5.7', u'mysql-client', u'build-essential', u'python3-pip', u'python3-dev'])
+TASK [mysql : Confirm MySQL root password before installing] *****************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-TASK [mysql : Change bind-address configuration] *******************************
-ok: [35.196.252.148] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
+TASK [mysql : Install MySQL] *************************************************************************************************************************************************************************************
+changed: [35.196.215.102] => (item=[u'mysql-server-5.7'])
 
-TASK [mysql : Create hybris database] ******************************************
-ok: [35.196.252.148]
+TASK [mysql : Change bind-address configuration] *****************************************************************************************************************************************************************
+changed: [35.196.215.102] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
 
-TASK [mysql : Create hybris database user] *************************************
-changed: [35.196.252.148]
+TASK [mysql : Copy hybris db config template file] ***************************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=8    changed=4    unreachable=0    failed=0   
+TASK [mysql : Create hybris db with hybris user] *****************************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-nohup: ignoring input
+TASK [mysql : Ignore errors when hybris DB already exists] *******************************************************************************************************************************************************
+skipping: [35.196.215.102]
 
-PLAY [db] **********************************************************************
+RUNNING HANDLER [mysql : Restart MySql] **************************************************************************************************************************************************************************
+changed: [35.196.215.102]
 
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
-
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
-
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
-
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
-
-TASK [mysql : Install MySQL] ***************************************************
-changed: [35.196.252.148] => (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server-5.7', u'mysql-client', u'build-essential', u'python3-pip', u'python3-dev'])
-
-TASK [mysql : Change bind-address configuration] *******************************
-changed: [35.196.252.148] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
-
-TASK [mysql : Create hybris database] ******************************************
-fatal: [35.196.252.148]: FAILED! => {"changed": false, "failed": true, "msg": "the python mysqldb module is required"}
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
-
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=6    changed=5    unreachable=0    failed=1   
-
-nohup: ignoring input
-
-PLAY [db] **********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
-
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
-
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
-
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
-
-TASK [mysql : Install MySQL] ***************************************************
-failed: [35.196.252.148] (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server-5.7', u'mysql-client', u'build-essential', u'python3-pip', u'python3-dev', u'python=3.3.3']) => {"failed": true, "item": ["bundler", "libmysqlclient-dev", "python-mysqldb", "mysql-server-5.7", "mysql-client", "build-essential", "python3-pip", "python3-dev", "python=3.3.3"], "msg": "version number inconsistent with state=latest: python=3.3.3"}
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
-
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=4    changed=3    unreachable=0    failed=1   
-
-nohup: ignoring input
-
-PLAY [db] **********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
-
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
-
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
-
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
-
-TASK [mysql : Install MySQL] ***************************************************
-failed: [35.196.252.148] (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server-5.7', u'mysql-client', u'build-essential', u'python3-pip', u'python3-dev', u'python=3.3.3']) => {"cache_update_time": 1505256102, "cache_updated": true, "failed": true, "item": ["bundler", "libmysqlclient-dev", "python-mysqldb", "mysql-server-5.7", "mysql-client", "build-essential", "python3-pip", "python3-dev", "python=3.3.3"], "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\"  --force-yes   install 'python=3.3.3'' failed: E: Version '3.3.3' for 'python' was not found\n", "rc": 100, "stderr": "E: Version '3.3.3' for 'python' was not found\n", "stderr_lines": ["E: Version '3.3.3' for 'python' was not found"], "stdout": "Reading package lists...\nBuilding dependency tree...\nReading state information...\n", "stdout_lines": ["Reading package lists...", "Building dependency tree...", "Reading state information..."]}
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
-
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=4    changed=3    unreachable=0    failed=1   
-
-nohup: ignoring input
-
-PLAY [db] **********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
-
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
-
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
-
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
-
-TASK [mysql : Install MySQL] ***************************************************
-ok: [35.196.252.148] => (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server-5.7', u'mysql-client', u'build-essential', u'python3-pip', u'python3-dev', u'python'])
-
-TASK [mysql : Change bind-address configuration] *******************************
-ok: [35.196.252.148] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
-
-TASK [mysql : Create hybris database] ******************************************
-fatal: [35.196.252.148]: FAILED! => {"changed": false, "failed": true, "msg": "the python mysqldb module is required"}
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
-
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=6    changed=3    unreachable=0    failed=1   
-
-nohup: ignoring input
-
-PLAY [db] **********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
-
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
-
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
-
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
-
-TASK [mysql : Install MySQL] ***************************************************
-ok: [35.196.252.148] => (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server-5.7', u'mysql-client', u'build-essential', u'python3-dev', u'python3-setuptools', u'python'])
-
-TASK [mysql : Change bind-address configuration] *******************************
-ok: [35.196.252.148] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
-
-TASK [mysql : Create hybris database] ******************************************
-fatal: [35.196.252.148]: FAILED! => {"changed": false, "failed": true, "msg": "the python mysqldb module is required"}
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
-
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=6    changed=3    unreachable=0    failed=1   
-
-nohup: ignoring input
-
-PLAY [db] **********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
-
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
-
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
-
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
-
-TASK [mysql : Install MySQL] ***************************************************
-ok: [35.196.252.148] => (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server-5.7', u'mysql-client', u'build-essential', u'python3-dev', u'python3-setuptools', u'python'])
-
-TASK [mysql : Change bind-address configuration] *******************************
-ok: [35.196.252.148] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
-
-TASK [mysql : Create hybris database] ******************************************
-fatal: [35.196.252.148]: FAILED! => {"changed": false, "failed": true, "msg": "the python mysqldb module is required"}
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
-
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=6    changed=3    unreachable=0    failed=1   
-
-nohup: ignoring input
-
-PLAY [db] **********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.252.148]
-
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.252.148]
-
-TASK [mysql : command] *********************************************************
-changed: [35.196.252.148]
-
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.252.148]
-
-TASK [mysql : Install MySQL] ***************************************************
-ok: [35.196.252.148] => (item=[u'bundler', u'libmysqlclient-dev', u'python-mysqldb', u'mysql-server-5.7', u'mysql-client', u'build-essential', u'python3-dev', u'python3-setuptools', u'python'])
-
-TASK [mysql : Change bind-address configuration] *******************************
-ok: [35.196.252.148] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
-
-TASK [mysql : Create hybris database] ******************************************
-fatal: [35.196.252.148]: FAILED! => {"changed": false, "failed": true, "msg": "the python mysqldb module is required"}
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
-
-PLAY RECAP *********************************************************************
-35.196.252.148             : ok=6    changed=3    unreachable=0    failed=1   
-
-nohup: ignoring input
-
-PLAY [db] **********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [104.196.202.62]
-
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [104.196.202.62]
-
-TASK [mysql : command] *********************************************************
-changed: [104.196.202.62]
-
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [104.196.202.62]
-
-TASK [mysql : Install MySQL] ***************************************************
-changed: [104.196.202.62] => (item=[u'python-mysqldb', u'mysql-server-5.7'])
-
-TASK [mysql : Change bind-address configuration] *******************************
-changed: [104.196.202.62] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
-
-PLAY RECAP *********************************************************************
-104.196.202.62             : ok=6    changed=5    unreachable=0    failed=0   
-
-nohup: ignoring input
-
-PLAY [db] **********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [104.196.202.62]
-
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [104.196.202.62]
-
-TASK [mysql : command] *********************************************************
-changed: [104.196.202.62]
-
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [104.196.202.62]
-
-TASK [mysql : Install MySQL] ***************************************************
-ok: [104.196.202.62] => (item=[u'python-mysqldb', u'mysql-server-5.7'])
-
-TASK [mysql : Change bind-address configuration] *******************************
-ok: [104.196.202.62] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
-
-TASK [mysql : Copy hybris db config template file] *****************************
-changed: [104.196.202.62]
-
-TASK [mysql : Create hybris db with hybris user] *******************************
-fatal: [104.196.202.62]: FAILED! => {"changed": true, "cmd": "mysql -u root -proot < /opt/hybrisdb.sql", "delta": "0:00:00.005034", "end": "2017-09-12 23:20:15.487668", "failed": true, "rc": 1, "start": "2017-09-12 23:20:15.482634", "stderr": "mysql: [Warning] Using a password on the command line interface can be insecure.\nERROR 1007 (HY000) at line 1: Can't create database 'hybris'; database exists", "stderr_lines": ["mysql: [Warning] Using a password on the command line interface can be insecure.", "ERROR 1007 (HY000) at line 1: Can't create database 'hybris'; database exists"], "stdout": "", "stdout_lines": []}
-	to retry, use: --limit @/opt/ansible/playbooks/mysql.retry
-
-PLAY RECAP *********************************************************************
-104.196.202.62             : ok=7    changed=4    unreachable=0    failed=1   
-
-nohup: ignoring input
-
-PLAY [db] **********************************************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [35.196.34.57]
-
-TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [35.196.34.57]
-
-TASK [mysql : command] *********************************************************
-changed: [35.196.34.57]
-
-TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [35.196.34.57]
-
-TASK [mysql : Install MySQL] ***************************************************
-changed: [35.196.34.57] => (item=[u'python-mysqldb', u'mysql-server-5.7'])
-
-TASK [mysql : Change bind-address configuration] *******************************
-changed: [35.196.34.57] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
-
-TASK [mysql : Copy hybris db config template file] *****************************
-changed: [35.196.34.57]
-
-TASK [mysql : Create hybris db with hybris user] *******************************
-changed: [35.196.34.57]
-
-RUNNING HANDLER [mysql : Restart MySql] ****************************************
-changed: [35.196.34.57]
-
-PLAY RECAP *********************************************************************
-35.196.34.57               : ok=9    changed=8    unreachable=0    failed=0   
+PLAY RECAP *******************************************************************************************************************************************************************************************************
+35.196.215.102             : ok=9    changed=8    unreachable=0    failed=0   
 
