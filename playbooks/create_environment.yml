@@ -1,0 +1,12 @@
+---
+- hosts: db:srch:web
+  remote_user: ubuntu
+  become: yes  
+  strategy: free
+  tasks:
+       - include_role: name=mysql
+         when: "'db' in group_names"
+       - include_role: name=solr
+         when: "'srch' in group_names"
+       - include_role: name=apache-http
+         when: "'web' in group_names"

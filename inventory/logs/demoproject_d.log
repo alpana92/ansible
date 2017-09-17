@@ -1,0 +1,198 @@
+nohup: ignoring input
+
+PLAY [srch] ********************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [34.224.51.4]
+
+TASK [common : Install unzip package] ******************************************
+changed: [34.224.51.4]
+
+TASK [user : Adding group solr] ************************************************
+changed: [34.224.51.4]
+
+TASK [user : Adding user solr with password solr in group solr] ****************
+changed: [34.224.51.4]
+
+TASK [user : configure sudoers] ************************************************
+changed: [34.224.51.4] => (item={u'regexp': u'^solr', u'line': u'solr   ALL=(ALL) NOPASSWD:ALL'})
+changed: [34.224.51.4] => (item={u'regexp': u'^%solr', u'line': u'%solr   ALL=(ALL) NOPASSWD:ALL'})
+
+TASK [jdk : Download java package] *********************************************
+changed: [34.224.51.4]
+
+TASK [jdk : Make java home directory] ******************************************
+changed: [34.224.51.4]
+
+TASK [jdk : Extract jdk in Java Home directoy] *********************************
+changed: [34.224.51.4]
+
+TASK [jdk : Alternatives java link created] ************************************
+changed: [34.224.51.4]
+
+TASK [jdk : Alternatives javac link created] ***********************************
+changed: [34.224.51.4]
+
+TASK [jdk : Check Java is installed] *******************************************
+changed: [34.224.51.4]
+
+TASK [jdk : Stop further if java is not installed] *****************************
+skipping: [34.224.51.4]
+
+TASK [jdk : set java home] *****************************************************
+changed: [34.224.51.4] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [34.224.51.4] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [34.224.51.4] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [34.224.51.4] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [34.224.51.4] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [34.224.51.4] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+
+TASK [jdk : source the environment] ********************************************
+changed: [34.224.51.4] => (item=. /etc/environment)
+changed: [34.224.51.4] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
+changed: [34.224.51.4] => (item=export PATH=$(dirname $(dirname $(readlink -f $(which java))))/bin:$PATH)
+
+TASK [solr : Download Solr Package] ********************************************
+changed: [34.224.51.4]
+
+TASK [solr : Make Solr directory] **********************************************
+changed: [34.224.51.4]
+
+TASK [solr : Extract solr package] *********************************************
+changed: [34.224.51.4]
+
+TASK [solr : Make solr symlink] ************************************************
+changed: [34.224.51.4]
+
+TASK [solr : Create solr init script] ******************************************
+changed: [34.224.51.4]
+
+TASK [solr : Copy the solr service template] ***********************************
+changed: [34.224.51.4]
+
+TASK [solr : Reload solr service configs] **************************************
+changed: [34.224.51.4] => (item=systemctl daemon-reload)
+changed: [34.224.51.4] => (item=systemctl enable /lib/systemd/system/solr.service)
+
+RUNNING HANDLER [solr : Restart solr] ******************************************
+changed: [34.224.51.4]
+
+PLAY RECAP *********************************************************************
+34.224.51.4                : ok=21   changed=20   unreachable=0    failed=0   
+
+nohup: ignoring input
+
+PLAY [adm,app] *****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [54.237.202.85]
+ok: [34.230.88.56]
+
+TASK [common : Install unzip package] ******************************************
+changed: [54.237.202.85]
+changed: [34.230.88.56]
+
+TASK [user : Adding group hybris] **********************************************
+changed: [34.230.88.56]
+changed: [54.237.202.85]
+
+TASK [user : Adding user hybris with password hybris in group hybris] **********
+changed: [34.230.88.56]
+changed: [54.237.202.85]
+
+TASK [user : configure sudoers] ************************************************
+changed: [34.230.88.56] => (item={u'regexp': u'^hybris', u'line': u'hybris   ALL=(ALL) NOPASSWD:ALL'})
+changed: [54.237.202.85] => (item={u'regexp': u'^hybris', u'line': u'hybris   ALL=(ALL) NOPASSWD:ALL'})
+changed: [54.237.202.85] => (item={u'regexp': u'^%hybris', u'line': u'%hybris   ALL=(ALL) NOPASSWD:ALL'})
+changed: [34.230.88.56] => (item={u'regexp': u'^%hybris', u'line': u'%hybris   ALL=(ALL) NOPASSWD:ALL'})
+
+TASK [jdk : Download java package] *********************************************
+changed: [54.237.202.85]
+changed: [34.230.88.56]
+
+TASK [jdk : Make java home directory] ******************************************
+changed: [34.230.88.56]
+changed: [54.237.202.85]
+
+TASK [jdk : Extract jdk in Java Home directoy] *********************************
+changed: [34.230.88.56]
+changed: [54.237.202.85]
+
+TASK [jdk : Alternatives java link created] ************************************
+changed: [54.237.202.85]
+changed: [34.230.88.56]
+
+TASK [jdk : Alternatives javac link created] ***********************************
+changed: [54.237.202.85]
+changed: [34.230.88.56]
+
+TASK [jdk : Check Java is installed] *******************************************
+changed: [54.237.202.85]
+changed: [34.230.88.56]
+
+TASK [jdk : Stop further if java is not installed] *****************************
+skipping: [54.237.202.85]
+skipping: [34.230.88.56]
+
+TASK [jdk : set java home] *****************************************************
+changed: [54.237.202.85] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [34.230.88.56] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [54.237.202.85] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [34.230.88.56] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [54.237.202.85] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [34.230.88.56] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [54.237.202.85] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [34.230.88.56] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [34.230.88.56] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [34.230.88.56] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [54.237.202.85] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [54.237.202.85] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+
+TASK [jdk : source the environment] ********************************************
+changed: [54.237.202.85] => (item=. /etc/environment)
+changed: [34.230.88.56] => (item=. /etc/environment)
+changed: [54.237.202.85] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
+changed: [34.230.88.56] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
+changed: [54.237.202.85] => (item=export PATH=$(dirname $(dirname $(readlink -f $(which java))))/bin:$PATH)
+changed: [34.230.88.56] => (item=export PATH=$(dirname $(dirname $(readlink -f $(which java))))/bin:$PATH)
+
+TASK [hybris : Download Hybris Package] ****************************************
+changed: [54.237.202.85]
+changed: [34.230.88.56]
+
+TASK [hybris : Make Hybris directory] ******************************************
+changed: [34.230.88.56]
+changed: [54.237.202.85]
+
+TASK [hybris : Make hybris symlink] ********************************************
+changed: [54.237.202.85]
+changed: [34.230.88.56]
+
+TASK [hybris : Extract hybris in Hybris directoy] ******************************
+changed: [54.237.202.85]
+changed: [34.230.88.56]
+
+TASK [hybris : set hybris home] ************************************************
+changed: [34.230.88.56] => (item=[u'/etc/environment', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.3.0/hybris'}])
+changed: [54.237.202.85] => (item=[u'/etc/environment', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.3.0/hybris'}])
+changed: [54.237.202.85] => (item=[u'/etc/profile', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.3.0/hybris'}])
+changed: [34.230.88.56] => (item=[u'/etc/profile', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.3.0/hybris'}])
+changed: [54.237.202.85] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.3.0/hybris'}])
+changed: [34.230.88.56] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.3.0/hybris'}])
+
+TASK [hybris : source the environment] *****************************************
+changed: [54.237.202.85] => (item=. /etc/environment)
+changed: [34.230.88.56] => (item=. /etc/environment)
+changed: [54.237.202.85] => (item=export HYBRIS_HOME=/opt/Hybris-6.3.0/hybris)
+changed: [34.230.88.56] => (item=export HYBRIS_HOME=/opt/Hybris-6.3.0/hybris)
+
+TASK [hybris : install the recipe] *********************************************
+changed: [54.237.202.85] => (item=/opt/hybris/installer/install.sh -r b2b_acc)
+changed: [54.237.202.85] => (item=chmod -R 775 /opt/Hybris-6.3.0; chown -R hybris:hybris /opt/Hybris-6.3.0)
+changed: [34.230.88.56] => (item=/opt/hybris/installer/install.sh -r b2b_acc)
+changed: [34.230.88.56] => (item=chmod -R 775 /opt/Hybris-6.3.0; chown -R hybris:hybris /opt/Hybris-6.3.0)
+
+PLAY RECAP *********************************************************************
+34.230.88.56               : ok=20   changed=19   unreachable=0    failed=0   
+54.237.202.85              : ok=20   changed=19   unreachable=0    failed=0   
+

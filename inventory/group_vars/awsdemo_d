@@ -1,0 +1,26 @@
+---
+repo_server: 54.210.0.102
+java_version: java-8-oracle
+java_package: jdk-8u131-linux-x64.tgz
+hybris_version: Hybris-6.3.0
+hybris_package: hybris-commerce-suite-6.3.0.5.zip
+hybris_recipe: b2b_acc
+solr_package: solr-multicore-for-hybris-6.3.0.tgz
+db_driver: mysql-connector-java-5.1.33-bin.jar
+domain_name: www.awsdemo-d.com
+servers_list:
+ - type: adm
+   name: awsdemo-d-aws-adm-001.hybrishosting.com
+   ip: 34.224.102.118
+ - type: app
+   name: awsdemo-d-aws-app-001.hybrishosting.com
+   ip: 34.203.31.158
+ - type: web
+   name: awsdemo-d-aws-web-001.hybrishosting.com
+   ip: 34.227.223.29
+ - type: srch
+   name: awsdemo-d-aws-srch-001.hybrishosting.com
+   ip: 34.224.28.207
+ - type: db
+   name: awsdemo-d-aws-db-001.hybrishosting.com
+   ip: 54.211.19.53
