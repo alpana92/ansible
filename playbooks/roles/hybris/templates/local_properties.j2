@@ -1,0 +1,78 @@
+{% set cluster_conf = ansible_hostname.split('-')[4] | int %}
+{% set cluster_id = {'value': cluster_conf - 1} %}
+{% if ansible_hostname.split('-')[3] == 'app' %}
+   {% if cluster_id.update({'value': cluster_conf + 9}) %}
+   {% endif %}
+{% endif %}
+
+{% if servers_list[0].type == 'adm' %}
+###########################################################################
+## Hostname and Cluster ID
+###########################################################################
+yms.hostname={{ ansible_hostname }}.hybrishosting.com
+cluster.id={{ cluster_id.value }}
+
+###########################################################################
+## Jvm Settings
+###########################################################################
+tomcat.jvm.route=hybris${cluster.id}
+tomcat.javaoptions=-DjvmRoute=${tomcat.jvm.route} -Djava.net.preferIPv4Stack=true -Djava.net.preferIPv4Addresses=true
+
+###########################################################################
+## Cluster Settings
+###########################################################################
+
+clustermode=true
+cluster.maxid=19
+
+cluster.broadcast.methods=jgroups
+cluster.broadcast.method.jgroups=de.hybris.platform.cluster.jgroups.JGroupsBroadcastMethod
+cluster.broadcast.method.jgroups.tcp.bind_addr={{ ansible_default_ipv4.address }}
+cluster.broadcast.method.jgroups.tcp.bind_port=7800
+cluster.broadcast.method.jgroups.channel.name=hybris-broadcast
+cluster.broadcast.method.jgroups.configuration=jgroups-tcp.xml
+{% endif %}
+
+###########################################################################
+## Port Settings
+###########################################################################
+
+# HTTP/HTTPS ports
+tomcat.http.port=9001
+tomcat.ssl.port=9002
+# AJP ports
+tomcat.ajp.port=8009
+tomcat.ajp.secureport=8010
+# Proxy ports
+proxy.http.port=80
+proxy.ssl.port=443
+
+###########################################################################
+## Webroot Settings 
+###########################################################################
+
+hac.webroot=/hac
+hmc.webroot=/hmc
+
+###########################################################################
+## DB Configurations
+###########################################################################
+{% for server in servers_list %}
+{% if server.type == 'db' %}
+db.url=jdbc:mysql://{{ server.name }}:3306/hybris?useConfigs=maxPerformance&characterEncoding=utf8
+{% endif %}
+{% endfor %}
+db.driver=com.mysql.jdbc.Driver
+db.username=hybris
+db.password=hybris
+db.tableprefix=
+db.customsessionsql=SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
+mysql.optional.tabledefs=CHARSET=utf8 COLLATE=utf8_bin
+mysql.tabletype=InnoDB
+mysql.allow.fractional.seconds=true
+
+###########################################################################
+## Solr Settings
+###########################################################################
+# Do not start solr during hybris startup
+solrserver.instances.default.autostart=false

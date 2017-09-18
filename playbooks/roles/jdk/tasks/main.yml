@@ -57,7 +57,7 @@
   with_items:
             - . /etc/environment
             - export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
-            - export PATH=$(dirname $(dirname $(readlink -f $(which java))))/bin:$PATH
+            - export PATH=$PATH:$(dirname $(dirname $(readlink -f $(which java))))/bin
   tags:
       - jdk_set_home
       - jdk

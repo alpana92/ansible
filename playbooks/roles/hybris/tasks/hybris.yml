@@ -27,7 +27,8 @@
   lineinfile: dest={{ item.0 }} state=present regexp={{ item.1.regexp }} line={{ item.1.line }} create=yes
   with_nested:
       - [ '/etc/environment', '/etc/profile', '/etc/profile.d/hybris.sh' ]
-      - [ { regexp: '^HYBRIS_HOME=', line: 'HYBRIS_HOME={{ hybris_home }}' } ]
+      - [ { regexp: '^HYBRIS_HOME=', line: 'HYBRIS_HOME={{ hybris_home }}' } , { regexp: '^ANT_HOME=', line: 'ANT_HOME={{ hybris_ant }}' } ,
+          { regexp: '^JAVA_HOME=', line: 'ANT_HOME={{ java_home }}' } , { regexp: '^PATH=', line: 'PATH={{ ansible_env.PATH }}:{{ hybris_ant }}/bin:{{ java_home }}' } ]
   tags:
       - hybris_set_home
       - hybris
@@ -35,18 +36,102 @@
 - name: source the environment
   shell: "{{ item }}"
   with_items:
-            - . /etc/environment
+            - /bin/bash /etc/environment
             - export HYBRIS_HOME={{ hybris_home }}
+            - export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+            - export ANT_HOME={{ hybris_ant }}
+            - export PATH=$PATH:{{ hybris_ant }}/bin:{{ java_home }}
   tags:
       - hybris_set_home
       - hybris
 
-- name: install the recipe
+- name: Copy the hybris service template
+  template: src=hybris.service  dest=/lib/systemd/system/hybris.service owner=root group=root mode=0775
+  tags:
+      - hybris_service
+      - hybris
+
+- name: Reload hybris service configs
+  shell: '{{ item }}'
+  with_items:
+            - systemctl daemon-reload
+            - systemctl enable /lib/systemd/system/hybris.service
+  tags:
+      - hybris_service
+      - hybris
+
+- name: Install hybris recipe
   shell: "{{ item }}"
   become_user: hybris
   with_items:
             - '{{ hybris_symlink }}/installer/install.sh -r {{ hybris_recipe }}'
-            - 'chmod -R 775 {{ hybris_dir }}; chown -R hybris:hybris {{ hybris_dir }}'
+  notify:
+        - Chown Hybris Dir
   tags:
       - hybris_install_recipe
+      - hybris
+
+- name: Copy the hybris local.properties template
+  template: src=local_properties.j2  dest={{ hybris_home }}/config/local.properties owner=hybris group=hybris mode=0775
+  tags:
+      - hybris_local_properties
+      - hybris
+
+- name: Copy the hybris server.xml template
+  template: src=server.xml  dest={{ hybris_home }}/config/tomcat/conf/server.xml owner=hybris group=hybris mode=0775
+  tags:
+      - hybris_server_xml
+      - hybris
+
+- name: Download db driver
+  get_url: url=http://{{ repo_server }}/database-drivers/{{ db_driver }} dest={{ hybris_home }}/bin/platform/lib/dbdriver/
+  notify:
+        - Chown Hybris Dir
+  tags:
+      - hybris_db_driver
+      - hybris
+
+- name: Build hybris app
+  shell: "{{ item }} chdir={{ hybris_platform }}"
+  become_user: hybris
+  environment:
+              HYBRIS_HOME: '{{ hybris_home }}'
+              JAVA_HOME: '{{ java_home }}'
+              ANT_HOME: '{{ hybris_ant }}'
+              PATH: '{{ ansible_env.PATH }}:{{ hybris_ant }}/bin:{{ java_home }}'
+  with_items:
+            - '. {{ hybris_platform }}/setantenv.sh'
+            - ant clean all
+  notify:
+        - Chown Hybris Dir
+  tags:
+      - hybris_build
+      - hybris
+
+- name: Add db and srch hosts in host file
+  lineinfile: "dest=/etc/hosts state=present regexp='^{{ item.ip }} ' line='{{ item.ip }} {{ item.name }}'"
+  with_items: 
+            - '{{ servers_list }}'
+  when: item.type == 'db' or item.type == 'srch'
+  tags:
+      - hybris_add_hosts
+      - hybris
+
+- name: DB Initialization
+  shell: "{{ item }} chdir={{ hybris_platform }}"
+  become_user: hybris
+  environment:
+              HYBRIS_HOME: '{{ hybris_home }}'
+              JAVA_HOME: '{{ java_home }}'
+              ANT_HOME: '{{ hybris_ant }}'
+              PATH: '{{ ansible_env.PATH }}:{{ hybris_ant }}/bin:{{ java_home }}'
+  with_items:
+            - '. {{ hybris_platform }}/setantenv.sh'
+            - 'nohup ant initialize -Dtenant=master > {{ hybris_home }}/log/initialization-$(date +%Y-%m-%dT%H-%M-%S).log 2>&1 &'
+  when: ansible_hostname == servers_list[0].name.replace( '.hybrishosting.com' , '' )
+  notify:
+        - Chown Hybris Dir
+        - Start Hybris
+  tags:
+      - hybris_initialize
       - hybris

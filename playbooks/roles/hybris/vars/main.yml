@@ -1,3 +1,7 @@
+java_home: /usr/lib/jvm/{{ java_version }}
 hybris_dir: /opt/{{ hybris_version }}
 hybris_home: /opt/{{ hybris_version }}/hybris
 hybris_symlink: /opt/hybris
+hybris_platform: /opt/{{ hybris_version }}/hybris/bin/platform
+hybris_script: /opt/{{ hybris_version }}/hybris/bin/platform/hybrisserver.sh
+hybris_ant: /opt/{{ hybris_version }}/hybris/bin/platform/apache-ant-1.9.1

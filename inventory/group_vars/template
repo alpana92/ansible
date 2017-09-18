@@ -1,0 +1,26 @@
+---
+repo_server: 54.210.0.102
+java_version:
+java_package:
+hybris_version:
+hybris_package:
+hybris_recipe:
+solr_package:
+db_driver:
+domain_name:
+servers_list:
+       - type: adm
+         name: projectname-d-provider-adm-001.hybrishosting.com
+         ip: projectname-d-provider-adm-001.hybrishosting.com_ip_addr
+       - type: app
+         name: projectname-d-provider-app-001.hybrishosting.com
+         ip: projectname-d-provider-app-001.hybrishosting.com_ip_addr
+       - type: srch
+         name: projectname-d-provider-srch-001.hybrishosting.com
+         ip: projectname-d-provider-srch-001.hybrishosting.com_ip_addr
+       - type: web
+         name: projectname-d-provider-web-001.hybrishosting.com
+         ip: projectname-d-provider-web-001.hybrishosting.com_ip_addr
+       - type: db
+         name: projectname-d-provider-db-001.hybrishosting.com
+         ip: projectname-d-provider-db-001.hybrishosting.com_ip_addr

@@ -6,3 +6,6 @@
 
 - name: Stop Hybris
   action: service name=hybris state=stopped
+
+- name: Chown Hybris Dir
+  action: file path=/opt/{{ hybris_version }} state=directory owner=hybris group=hybris mode=0775

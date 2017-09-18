@@ -17,8 +17,20 @@
             - mime
             - socache_shmcb
             - ssl
+  tags:
+      - apache2_enable_mods
+      - apache2
+
+- name: Copy the domain template template
+  template: src=domain.j2  dest=/etc/apache2/sites-available/{{ domain_name }}.conf owner=root group=root mode=0644
+  tags:
+      - apache2_domain
+      - apache2
+
+- name: Enable the domain
+  shell: "a2ensite {{ domain_name }}.conf"
   notify:
         - Restart apache2
   tags:
-      - apache2_enable_mods
+      - apache2_domain
       - apache2

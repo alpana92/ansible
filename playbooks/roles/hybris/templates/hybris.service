@@ -1,0 +1,15 @@
+[Unit]
+Description=hybris
+After=network.target
+
+[Service]
+WorkingDirectory={{ hybris_platform }}
+Type=oneshot
+ExecStart={{ hybris_script }} start
+ExecStop={{ hybris_script }} stop
+RemainAfterExit=yes
+User=hybris
+Group=hybris
+
+[Install]
+WantedBy=multi-user.target

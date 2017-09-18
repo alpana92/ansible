@@ -10,3 +10,9 @@
          when: "'srch' in group_names"
        - include_role: name=apache-http
          when: "'web' in group_names"
+
+- hosts: adm,app
+  remote_user: ubuntu
+  become: yes
+  roles:
+       - hybris
