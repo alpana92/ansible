@@ -45,21 +45,6 @@
       - hybris_set_home
       - hybris
 
-- name: Copy the hybris service template
-  template: src=hybris.service  dest=/lib/systemd/system/hybris.service owner=root group=root mode=0775
-  tags:
-      - hybris_service
-      - hybris
-
-- name: Reload hybris service configs
-  shell: '{{ item }}'
-  with_items:
-            - systemctl daemon-reload
-            - systemctl enable /lib/systemd/system/hybris.service
-  tags:
-      - hybris_service
-      - hybris
-
 - name: Install hybris recipe
   shell: "{{ item }}"
   become_user: hybris
@@ -71,16 +56,33 @@
       - hybris_install_recipe
       - hybris
 
-- name: Copy the hybris local.properties template
-  template: src=local_properties.j2  dest={{ hybris_home }}/config/local.properties owner=hybris group=hybris mode=0775
+- name: Copy templates
+  template: src={{ item.filename }} dest={{ item.filepath }} owner={{ item.owner }} group={{ item.group }} mode=0775
+  with_items:
+            - { filename: 'hybris.service', filepath: '/lib/systemd/system/hybris.service', owner: 'root', group: 'root' }
+            - { filename: 'server.xml', filepath: '{{ hybris_home }}/config/tomcat/conf/server.xml', owner: 'hybris', group: 'hybris' }
+            - { filename: 'local_properties.j2', filepath: '{{ hybris_home }}/config/local.properties', owner: 'hybris', group: 'hybris' }
+            - { filename: 'standaloneSolrServerConfig.j2', filepath: '/tmp/standaloneSolrServerConfig.impex', owner: 'root', group: 'root' }
   tags:
-      - hybris_local_properties
+      - hybris_configs
       - hybris
 
-- name: Copy the hybris server.xml template
-  template: src=server.xml  dest={{ hybris_home }}/config/tomcat/conf/server.xml owner=hybris group=hybris mode=0775
+- name: Reload hybris service configs
+  shell: '{{ item }}'
+  with_items:
+            - systemctl daemon-reload
+            - systemctl enable /lib/systemd/system/hybris.service
   tags:
-      - hybris_server_xml
+      - hybris_configs
+      - hybris
+
+- name: Add db and srch hosts in host file
+  lineinfile: "dest=/etc/hosts state=present regexp='^{{ item.ip }} ' line='{{ item.ip }} {{ item.name }}'"
+  with_items:
+            - '{{ servers_list }}'
+  when: item.type == 'db' or item.type == 'srch'
+  tags:
+      - hybris_add_hosts
       - hybris
 
 - name: Download db driver
@@ -108,15 +110,6 @@
       - hybris_build
       - hybris
 
-- name: Add db and srch hosts in host file
-  lineinfile: "dest=/etc/hosts state=present regexp='^{{ item.ip }} ' line='{{ item.ip }} {{ item.name }}'"
-  with_items: 
-            - '{{ servers_list }}'
-  when: item.type == 'db' or item.type == 'srch'
-  tags:
-      - hybris_add_hosts
-      - hybris
-
 - name: DB Initialization
   shell: "{{ item }} chdir={{ hybris_platform }}"
   become_user: hybris
@@ -127,11 +120,28 @@
               PATH: '{{ ansible_env.PATH }}:{{ hybris_ant }}/bin:{{ java_home }}'
   with_items:
             - '. {{ hybris_platform }}/setantenv.sh'
-            - 'nohup ant initialize -Dtenant=master > {{ hybris_home }}/log/initialization-$(date +%Y-%m-%dT%H-%M-%S).log 2>&1 &'
+            - 'ant initialize -Dtenant=master > {{ hybris_home }}/log/initialization.log 2>&1'
   when: ansible_hostname == servers_list[0].name.replace( '.hybrishosting.com' , '' )
   notify:
         - Chown Hybris Dir
         - Start Hybris
   tags:
       - hybris_initialize
+      - hybris
+
+- name: Integrate Solr with Hybris
+  shell: "{{ item }} chdir={{ hybris_platform }}"
+  become_user: hybris
+  environment:
+              HYBRIS_HOME: '{{ hybris_home }}'
+              JAVA_HOME: '{{ java_home }}'
+              ANT_HOME: '{{ hybris_ant }}'
+              PATH: '{{ ansible_env.PATH }}:{{ hybris_ant }}/bin:{{ java_home }}'
+  with_items:
+            - '. {{ hybris_platform }}/setantenv.sh'
+            - 'ant importImpex -Dresource=/tmp/standaloneSolrServerConfig.impex > {{ hybris_home }}/log/solr_integration.log 2>&1'
+  notify:
+        - Chown Hybris Dir
+  tags:
+      - hybris_integtrate_solr
       - hybris
