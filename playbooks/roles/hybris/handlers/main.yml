@@ -9,3 +9,6 @@
 
 - name: Chown Hybris Dir
   action: file path=/opt/{{ hybris_version }} state=directory owner=hybris group=hybris mode=0775
+
+- name: Start NFS server
+  action: service name=nfs-kernel-server state=started

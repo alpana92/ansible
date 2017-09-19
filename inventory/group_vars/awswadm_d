@@ -1,0 +1,27 @@
+---
+repo_server: 54.210.0.102
+java_version: java-8-oracle
+java_package: jdk-8u131-linux-x64.tgz
+hybris_version: Hybris-6.2.0
+hybris_package: hybris-commerce-suite-6.2.0.4.zip
+hybris_recipe: b2b_acc
+solr_package: solr-multicore-for-hybris-6.2.0.tgz
+db_driver: mysql-connector-java-5.1.33-bin.jar
+domain_name: www.awswadm-d.com
+default_shop: powertools
+servers_list:
+ - type: adm
+   name: awswadm-d-aws-adm-001.hybrishosting.com
+   ip: 54.210.125.74
+ - type: app
+   name: awswadm-d-aws-app-001.hybrishosting.com
+   ip: 54.175.250.222
+ - type: web
+   name: awswadm-d-aws-web-001.hybrishosting.com
+   ip: 54.88.154.24
+ - type: srch
+   name: awswadm-d-aws-srch-001.hybrishosting.com
+   ip: 54.208.221.113
+ - type: db
+   name: awswadm-d-aws-db-001.hybrishosting.com
+   ip: 54.173.208.164

@@ -1,0 +1,29 @@
+---
+- name: Install nfs-server
+  apt: name=nfs-kernel-server update_cache=yes state=present
+  tags:
+      - nfs_server_install
+      - nfs
+
+- name: Create nfs share folder
+  file: path=/var/nfs owner=root group=root mode=0775 state=directory
+  tags:
+      - nfs_share_folder
+      - nfs
+
+- name: Export filesystem configuration
+  lineinfile: "path=/etc/exports owner=root group=root mode=0775 regexp='^/var/nfs ' line='/var/nfs {{ item.ip }}(rw,sync,root_squash,subtree_check)'"
+  with_items:
+            - '{{ servers_list }}'
+  when: item.type == 'app'
+  tags:
+      - nfs_export_config
+      - nfs
+
+- name: Export nfs filesystem
+  shell: 'exportfs -a'
+  notify:
+        - Start NFS server
+  tags:
+      - nfs_export_fs
+      - nfs

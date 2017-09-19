@@ -124,10 +124,30 @@
   when: ansible_hostname == servers_list[0].name.replace( '.hybrishosting.com' , '' )
   notify:
         - Chown Hybris Dir
-        - Start Hybris
   tags:
       - hybris_initialize
       - hybris
+
+- name: Copy media data in nfs share
+  shell: 'cp -r {{ hybris_home }}/data/media/sys_master /var/nfs'
+  when: servers_list[0].type == 'adm' and ansible_hostname == servers_list[0].name.replace( '.hybrishosting.com' , '' )
+  notify:
+        - Chown Hybris Dir
+  tags:
+      - nfs_copy_media
+      - hybris
+      - nfs
+
+- name: Copy media data to target location
+  shell: 'mv /mnt/nfs/var/nfs/sys_master/* {{ hybris_home }}/data/media'
+  when: servers_list[0].type == 'adm' and ansible_hostname != servers_list[0].name.replace( '.hybrishosting.com' , '' )
+  notify:
+        - Chown Hybris Dir
+        - Start Hybris
+  tags:
+      - nfs_copy_media
+      - hybris
+      - nfs
 
 - name: Integrate Solr with Hybris
   shell: "{{ item }} chdir={{ hybris_platform }}"
