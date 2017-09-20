@@ -9,7 +9,7 @@
   shell: '{{ item }}'
   with_items:
             - 'mkdir -p /mnt/nfs/var/nfs'
-            - 'mount servers_list[0].ip:/var/nfs /mnt/nfs/var/nfs/'
+            - 'mount {{ servers_list[0].ip }}:/var/nfs /mnt/nfs/var/nfs/'
   tags:
       - nfs_mount
       - nfs

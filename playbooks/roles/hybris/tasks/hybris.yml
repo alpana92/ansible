@@ -36,7 +36,7 @@
 - name: source the environment
   shell: "{{ item }}"
   with_items:
-            - /bin/bash /etc/environment
+            - . /etc/environment
             - export HYBRIS_HOME={{ hybris_home }}
             - export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
             - export ANT_HOME={{ hybris_ant }}
@@ -47,6 +47,11 @@
 
 - name: Install hybris recipe
   shell: "{{ item }}"
+  environment:
+              HYBRIS_HOME: '{{ hybris_home }}'
+              JAVA_HOME: '{{ java_home }}'
+              ANT_HOME: '{{ hybris_ant }}'
+              PATH: '{{ ansible_env.PATH }}:{{ hybris_ant }}/bin:{{ java_home }}'
   become_user: hybris
   with_items:
             - '{{ hybris_symlink }}/installer/install.sh -r {{ hybris_recipe }}'
@@ -139,11 +144,10 @@
       - nfs
 
 - name: Copy media data to target location
-  shell: 'mv /mnt/nfs/var/nfs/sys_master/* {{ hybris_home }}/data/media'
+  shell: 'cp -r /mnt/nfs/var/nfs/sys_master/* {{ hybris_home }}/data/media'
   when: servers_list[0].type == 'adm' and ansible_hostname != servers_list[0].name.replace( '.hybrishosting.com' , '' )
   notify:
         - Chown Hybris Dir
-        - Start Hybris
   tags:
       - nfs_copy_media
       - hybris
@@ -161,7 +165,7 @@
             - '. {{ hybris_platform }}/setantenv.sh'
             - 'ant importImpex -Dresource=/tmp/standaloneSolrServerConfig.impex > {{ hybris_home }}/log/solr_integration.log 2>&1'
   notify:
-        - Chown Hybris Dir
+        - Start Hybris
   tags:
       - hybris_integtrate_solr
       - hybris

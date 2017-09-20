@@ -7,21 +7,21 @@ hybris_package: hybris-commerce-suite-6.2.0.4.zip
 hybris_recipe: b2b_acc
 solr_package: solr-multicore-for-hybris-6.2.0.tgz
 db_driver: mysql-connector-java-5.1.33-bin.jar
-domain_name: www.awswadm-d.com
+domain_name: www.awswithadm-d.com
 default_shop: powertools
 servers_list:
  - type: adm
-   name: awswadm-d-aws-adm-001.hybrishosting.com
-   ip: 54.210.125.74
+   name: awswithadm-d-aws-adm-001.hybrishosting.com
+   ip: 54.172.33.52
  - type: app
-   name: awswadm-d-aws-app-001.hybrishosting.com
-   ip: 54.175.250.222
+   name: awswithadm-d-aws-app-001.hybrishosting.com
+   ip: 52.91.99.9
  - type: web
-   name: awswadm-d-aws-web-001.hybrishosting.com
-   ip: 54.88.154.24
+   name: awswithadm-d-aws-web-001.hybrishosting.com
+   ip: 54.91.181.164
  - type: srch
-   name: awswadm-d-aws-srch-001.hybrishosting.com
-   ip: 54.208.221.113
+   name: awswithadm-d-aws-srch-001.hybrishosting.com
+   ip: 34.207.251.38
  - type: db
-   name: awswadm-d-aws-db-001.hybrishosting.com
-   ip: 54.173.208.164
+   name: awswithadm-d-aws-db-001.hybrishosting.com
+   ip: 107.21.69.250
