@@ -31,6 +31,17 @@ cluster.broadcast.method.jgroups.tcp.bind_addr={{ ansible_default_ipv4.address }
 cluster.broadcast.method.jgroups.tcp.bind_port=7800
 cluster.broadcast.method.jgroups.channel.name=hybris-broadcast
 cluster.broadcast.method.jgroups.configuration=jgroups-tcp.xml
+
+###########################################################################
+## Media Replication
+###########################################################################
+
+cluster.{{ cluster_id.value }}.media.read.dir=/var/nfs
+{% if ansible_hostname == servers_list[0].name.replace( '.hybrishosting.com' , '' ) %}
+cluster.{{ cluster_id.value }}.media.replication.dirs=/opt/{{ hybris_version }}/hybris/data;/var/nfs/
+{% else %}
+cluster.{{ cluster_id.value }}.media.replication.dirs=/var/nfs/;/opt/{{ hybris_version }}/hybris/data  
+{% endif %} 
 {% endif %}
 
 ###########################################################################

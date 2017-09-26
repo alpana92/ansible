@@ -55,11 +55,11 @@
   become_user: hybris
   with_items:
             - '{{ hybris_symlink }}/installer/install.sh -r {{ hybris_recipe }}'
-  notify:
-        - Chown Hybris Dir
   tags:
       - hybris_install_recipe
       - hybris
+
+- include: hybris_dir_ownership.yml
 
 - name: Copy templates
   template: src={{ item.filename }} dest={{ item.filepath }} owner={{ item.owner }} group={{ item.group }} mode=0775
@@ -92,11 +92,11 @@
 
 - name: Download db driver
   get_url: url=http://{{ repo_server }}/database-drivers/{{ db_driver }} dest={{ hybris_home }}/bin/platform/lib/dbdriver/
-  notify:
-        - Chown Hybris Dir
   tags:
       - hybris_db_driver
       - hybris
+
+- include: hybris_dir_ownership.yml
 
 - name: Build hybris app
   shell: "{{ item }} chdir={{ hybris_platform }}"
@@ -110,10 +110,12 @@
             - '. {{ hybris_platform }}/setantenv.sh'
             - ant clean all
   notify:
-        - Chown Hybris Dir
+        - Start Hybris
   tags:
       - hybris_build
       - hybris
+
+- include: hybris_dir_ownership.yml
 
 - name: DB Initialization
   shell: "{{ item }} chdir={{ hybris_platform }}"
@@ -127,31 +129,11 @@
             - '. {{ hybris_platform }}/setantenv.sh'
             - 'ant initialize -Dtenant=master > {{ hybris_home }}/log/initialization.log 2>&1'
   when: ansible_hostname == servers_list[0].name.replace( '.hybrishosting.com' , '' )
-  notify:
-        - Chown Hybris Dir
   tags:
       - hybris_initialize
       - hybris
 
-- name: Copy media data in nfs share
-  shell: 'cp -r {{ hybris_home }}/data/media/sys_master /var/nfs'
-  when: servers_list[0].type == 'adm' and ansible_hostname == servers_list[0].name.replace( '.hybrishosting.com' , '' )
-  notify:
-        - Chown Hybris Dir
-  tags:
-      - nfs_copy_media
-      - hybris
-      - nfs
-
-- name: Copy media data to target location
-  shell: 'cp -r /mnt/nfs/var/nfs/sys_master/* {{ hybris_home }}/data/media'
-  when: servers_list[0].type == 'adm' and ansible_hostname != servers_list[0].name.replace( '.hybrishosting.com' , '' )
-  notify:
-        - Chown Hybris Dir
-  tags:
-      - nfs_copy_media
-      - hybris
-      - nfs
+- include: hybris_dir_ownership.yml
 
 - name: Integrate Solr with Hybris
   shell: "{{ item }} chdir={{ hybris_platform }}"
@@ -164,8 +146,9 @@
   with_items:
             - '. {{ hybris_platform }}/setantenv.sh'
             - 'ant importImpex -Dresource=/tmp/standaloneSolrServerConfig.impex > {{ hybris_home }}/log/solr_integration.log 2>&1'
-  notify:
-        - Start Hybris
+  when: servers_list[0].type == 'adm' and ansible_hostname == servers_list[0].name.replace( '.hybrishosting.com' , '' )
   tags:
       - hybris_integtrate_solr
       - hybris
+
+- include: hybris_dir_ownership.yml

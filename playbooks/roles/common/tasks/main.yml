@@ -1,5 +1,8 @@
 ---
 - name: Install unzip package
-  apt: name=unzip state=latest
+  apt: name={{ item }} state=latest
+  with_items:
+            - tree
+            - unzip
   tags:
       - unzip

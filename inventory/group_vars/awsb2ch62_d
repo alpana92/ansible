@@ -1,0 +1,27 @@
+---
+repo_server: 54.210.0.102
+java_version: java-8-oracle
+java_package: jdk-8u131-linux-x64.tgz
+hybris_version: Hybris-6.3.0
+hybris_package: hybris-commerce-suite-6.3.0.5.zip
+hybris_recipe: b2b_acc
+solr_package: solr-multicore-for-hybris-6.3.0.tgz
+db_driver: mysql-connector-java-5.1.33-bin.jar
+domain_name: www.awsb2ch62-d.com
+default_shop: powertools
+servers_list:
+ - type: adm
+   name: awsb2ch62-d-aws-adm-001.hybrishosting.com
+   ip: 34.234.78.220
+ - type: app
+   name: awsb2ch62-d-aws-app-001.hybrishosting.com
+   ip: 54.226.220.169
+ - type: web
+   name: awsb2ch62-d-aws-web-001.hybrishosting.com
+   ip: 34.207.115.225
+ - type: srch
+   name: awsb2ch62-d-aws-srch-001.hybrishosting.com
+   ip: 34.229.163.160
+ - type: db
+   name: awsb2ch62-d-aws-db-001.hybrishosting.com
+   ip: 54.211.62.5

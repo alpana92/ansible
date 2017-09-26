@@ -6,7 +6,7 @@
       - nfs
 
 - name: Create nfs share folder
-  file: path=/var/nfs owner=root group=root mode=0775 state=directory
+  file: path=/var/nfs owner=hybris group=hybris mode=0775 state=directory
   tags:
       - nfs_share_folder
       - nfs

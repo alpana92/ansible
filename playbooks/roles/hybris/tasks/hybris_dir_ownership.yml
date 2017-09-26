@@ -1,0 +1,8 @@
+- name: Chown Hybris Dir
+  file: path={{ item }} state=directory owner=hybris group=hybris mode=0775
+  with_items:
+            - '/var/nfs/'
+            - '/opt/{{ hybris_version }}'
+  tags:
+      - hybris_chown
+      - hybris
