@@ -12,16 +12,7 @@
       - nfs
 
 - name: Mount nfs
-  shell: 'mount {{ servers_list[0].ip }}:/var/nfs /var/nfs/'
-  tags:    
+  mount: path=/var/nfs/ src={{ servers_list[0].ip }}:/var/nfs state=mounted fstype=nfs4 opts=rw,hard,noatime,nolock,tcp,intr
+  tags:
       - nfs_mount
       - nfs
-
-- name: Automatically mount the NFS share during the OS startup
-  lineinfile: "path=/etc/fstab owner=root group=root mode=0775 regexp='^{{ item.ip }}:/var/nfs ' line='{{ item.ip }}:/var/nfs  /var/nfs  nfs      auto,noatime,nolock,bg,nf svers=3,intr,tcp,actimeo=1800 0 0'"
-  with_items:
-            - '{{ servers_list }}'
-  when: item.type == 'app'
-  tags:
-      - nfs_export_config
-      - nfs  
