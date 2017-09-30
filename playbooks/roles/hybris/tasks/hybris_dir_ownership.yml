@@ -1,8 +1,12 @@
 - name: Chown Hybris Dir
-  file: path={{ item }} state=directory owner=hybris group=hybris mode=0775
-  with_items:
-            - '/var/nfs/'
-            - '/opt/{{ hybris_version }}'
+  file: path=/opt/{{ hybris_version }} state=directory owner=hybris group=hybris mode=0775
   tags:
       - hybris_chown
       - hybris
+
+- name: Chown NFS Dir
+  file: path=/var/nfs/ state=directory owner=hybris group=hybris mode=0775
+  when: servers_list[0].type == 'adm'
+  tags:
+      - nfs_chown
+      - nfs

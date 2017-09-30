@@ -146,7 +146,7 @@
   with_items:
             - '. {{ hybris_platform }}/setantenv.sh'
             - 'ant importImpex -Dresource=/tmp/standaloneSolrServerConfig.impex > {{ hybris_home }}/log/solr_integration.log 2>&1'
-  when: servers_list[0].type == 'adm' and ansible_hostname == servers_list[0].name
+  when: ansible_hostname == servers_list[0].name
   tags:
       - hybris_integtrate_solr
       - hybris
