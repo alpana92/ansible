@@ -2,50 +2,39 @@
 ansible_python_interpreter=/usr/bin/python3
 ansible_ssh_common_args='-o StrictHostKeyChecking=no'
 
-[servers:vars]
-repo_server=54.210.0.102
-java_version=
-java_package=
-hybris_version=
-hybris_package=
-hybris_recipe=
-solr_package=
-db_driver=
-domain_name=
-
-[servers:children]
+[gceb2ch62_d:children]
 adm
 app
-srch
 web
+srch
 db
 
 [adm:children]
-projectname-d-provider-adm-001.hybrishosting.com
+gceb2ch62-d-gce-adm-001
+
+[gceb2ch62-d-gce-adm-001]
+35.185.36.75
 
 [app:children]
-projectname-d-provider-app-001.hybrishosting.com
+gceb2ch62-d-gce-app-001
 
-[srch:children]
-projectname-d-provider-srch-001.hybrishosting.com
+[gceb2ch62-d-gce-app-001]
+35.196.183.161
 
 [web:children]
-projectname-d-provider-web-001.hybrishosting.com
+gceb2ch62-d-gce-web-001
+
+[gceb2ch62-d-gce-web-001]
+35.190.128.91
+
+[srch:children]
+gceb2ch62-d-gce-srch-001
+
+[gceb2ch62-d-gce-srch-001]
+35.196.217.109
 
 [db:children]
-projectname-d-provider-db-001.hybrishosting.com
+gceb2ch62-d-gce-db-001
 
-[projectname-d-provider-adm-001.hybrishosting.com]
-projectname-d-provider-adm-001.hybrishosting.com_ip_address
-
-[projectname-d-provider-app-001.hybrishosting.com]
-projectname-d-provider-app-001.hybrishosting.com_ip_address
-
-[projectname-d-provider-srch-001.hybrishosting.com]
-projectname-d-provider-srch-001.hybrishosting.com_ip_address
-
-[projectname-d-provider-web-001.hybrishosting.com]
-projectname-d-provider-web-001.hybrishosting.com_ip_address
-
-[projectname-d-provider-db-001.hybrishosting.com]
-projectname-d-provider-db-001.hybrishosting.com_ip_address
+[gceb2ch62-d-gce-db-001]
+104.196.208.26

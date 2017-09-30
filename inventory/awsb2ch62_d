@@ -10,31 +10,31 @@ srch
 db
 
 [adm:children]
-awsb2ch62-d-aws-adm-001.hybrishosting.com
+awsb2ch62-d-aws-adm-001
 
-[awsb2ch62-d-aws-adm-001.hybrishosting.com]
-34.202.229.223
+[awsb2ch62-d-aws-adm-001]
+52.91.97.115
 
 [app:children]
-awsb2ch62-d-aws-app-001.hybrishosting.com
+awsb2ch62-d-aws-app-001
 
-[awsb2ch62-d-aws-app-001.hybrishosting.com]
-52.200.5.159
+[awsb2ch62-d-aws-app-001]
+54.91.169.134
 
 [web:children]
-awsb2ch62-d-aws-web-001.hybrishosting.com
+awsb2ch62-d-aws-web-001
 
-[awsb2ch62-d-aws-web-001.hybrishosting.com]
-54.173.217.183
+[awsb2ch62-d-aws-web-001]
+54.84.221.126
 
 [srch:children]
-awsb2ch62-d-aws-srch-001.hybrishosting.com
+awsb2ch62-d-aws-srch-001
 
-[awsb2ch62-d-aws-srch-001.hybrishosting.com]
-54.242.70.142
+[awsb2ch62-d-aws-srch-001]
+54.227.116.251
 
 [db:children]
-awsb2ch62-d-aws-db-001.hybrishosting.com
+awsb2ch62-d-aws-db-001
 
-[awsb2ch62-d-aws-db-001.hybrishosting.com]
-34.228.116.230
+[awsb2ch62-d-aws-db-001]
+34.204.52.0

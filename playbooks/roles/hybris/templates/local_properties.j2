@@ -9,7 +9,7 @@
 ###########################################################################
 ## Hostname and Cluster ID
 ###########################################################################
-yms.hostname={{ ansible_hostname }}.hybrishosting.com
+yms.hostname={{ ansible_hostname }}
 cluster.id={{ cluster_id.value }}
 
 ###########################################################################
@@ -37,7 +37,7 @@ cluster.broadcast.method.jgroups.configuration=jgroups-tcp.xml
 ###########################################################################
 
 cluster.{{ cluster_id.value }}.media.read.dir=/var/nfs
-{% if ansible_hostname == servers_list[0].name.replace( '.hybrishosting.com' , '' ) %}
+{% if ansible_hostname == servers_list[0].name %}
 cluster.{{ cluster_id.value }}.media.replication.dirs=/opt/{{ hybris_version }}/hybris/data;/var/nfs/
 {% else %}
 cluster.{{ cluster_id.value }}.media.replication.dirs=/var/nfs/;/opt/{{ hybris_version }}/hybris/data  

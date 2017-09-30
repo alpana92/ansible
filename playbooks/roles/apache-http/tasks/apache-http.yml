@@ -21,10 +21,10 @@
       - apache2_enable_mods
       - apache2
 
-- name: Copy the domain template
-  template: src=domain.j2  dest=/etc/apache2/sites-available/{{ domain_name }}.conf owner=root group=root mode=0644
+- name: Copy the site template
+  template: src=site.j2  dest=/etc/apache2/sites-available/{{ site_name }}.conf owner=root group=root mode=0644
   tags:
-      - apache2_domain
+      - apache2_site
       - apache2
 
 - name: Add hybris hosts in host file
@@ -36,10 +36,10 @@
       - hybris_add_hosts
       - hybris
 
-- name: Enable the domain
-  shell: "a2ensite {{ domain_name }}.conf"
+- name: Enable the site
+  shell: "a2ensite {{ site_name }}.conf"
   notify:
         - Restart apache2
   tags:
-      - apache2_domain
+      - apache2_site
       - apache2

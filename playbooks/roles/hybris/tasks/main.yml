@@ -1,6 +1,6 @@
 ---
 - include: nfs_server.yml
-  when: servers_list[0].type == 'adm' and ansible_hostname == servers_list[0].name.replace( '.hybrishosting.com' , '' )
+  when: servers_list[0].type == 'adm' and ansible_hostname == servers_list[0].name
 - include: nfs_client.yml
-  when: servers_list[0].type == 'adm' and ansible_hostname != servers_list[0].name.replace( '.hybrishosting.com' , '' )
+  when: servers_list[0].type == 'adm' and ansible_hostname != servers_list[0].name
 - include: hybris.yml

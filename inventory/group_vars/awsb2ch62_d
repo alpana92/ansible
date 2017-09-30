@@ -7,21 +7,21 @@ hybris_package: hybris-commerce-suite-6.2.0.4.zip
 hybris_recipe: b2c_acc
 solr_package: solr-multicore-for-hybris-6.2.0.tgz
 db_driver: mysql-connector-java-5.1.33-bin.jar
-domain_name: www.awsb2ch62-d.com
+site_name: www.awsb2ch62-d.com
 default_shop: electronics
 servers_list:
  - type: adm
-   name: awsb2ch62-d-aws-adm-001.hybrishosting.com
-   ip: 34.202.229.223
+   name: awsb2ch62-d-aws-adm-001
+   ip: 52.91.97.115
  - type: app
-   name: awsb2ch62-d-aws-app-001.hybrishosting.com
-   ip: 52.200.5.159
+   name: awsb2ch62-d-aws-app-001
+   ip: 54.91.169.134
  - type: web
-   name: awsb2ch62-d-aws-web-001.hybrishosting.com
-   ip: 54.173.217.183
+   name: awsb2ch62-d-aws-web-001
+   ip: 54.84.221.126
  - type: srch
-   name: awsb2ch62-d-aws-srch-001.hybrishosting.com
-   ip: 54.242.70.142
+   name: awsb2ch62-d-aws-srch-001
+   ip: 54.227.116.251
  - type: db
-   name: awsb2ch62-d-aws-db-001.hybrishosting.com
-   ip: 34.228.116.230
+   name: awsb2ch62-d-aws-db-001
+   ip: 34.204.52.0

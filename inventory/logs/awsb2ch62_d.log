@@ -2,630 +2,630 @@
 PLAY [db:srch:web] *************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [54.242.70.142]
-ok: [54.173.217.183]
+ok: [54.84.221.126]
+ok: [54.227.116.251]
 
 TASK [mysql : Set MySQL root password before installing] ***********************
-skipping: [54.242.70.142]
-skipping: [54.173.217.183]
+skipping: [54.84.221.126]
+skipping: [54.227.116.251]
 
 TASK [mysql : command] *********************************************************
-skipping: [54.242.70.142]
-skipping: [54.173.217.183]
+skipping: [54.84.221.126]
+skipping: [54.227.116.251]
+
+TASK [mysql : Confirm MySQL root password before installing] *******************
+skipping: [54.84.221.126]
+skipping: [54.227.116.251]
+
+TASK [mysql : Install MySQL] ***************************************************
+skipping: [54.84.221.126] => (item=[]) 
+skipping: [54.227.116.251] => (item=[]) 
+
+TASK [mysql : Change bind-address configuration] *******************************
+skipping: [54.84.221.126] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'}) 
+skipping: [54.227.116.251] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'}) 
+
+TASK [mysql : Copy hybris db config template file] *****************************
+skipping: [54.84.221.126]
+skipping: [54.227.116.251]
+
+TASK [mysql : Create hybris db with hybris user] *******************************
+skipping: [54.84.221.126]
+skipping: [54.227.116.251]
+
+TASK [mysql : Ignore errors when hybris DB already exists] *********************
+skipping: [54.84.221.126]
+skipping: [54.227.116.251]
+
+TASK [common : Install unzip package] ******************************************
+skipping: [54.84.221.126] => (item=[]) 
+
+TASK [user : Adding group solr] ************************************************
+skipping: [54.84.221.126]
+
+TASK [user : Adding user solr with password solr in group solr] ****************
+skipping: [54.84.221.126]
+
+TASK [user : configure sudoers] ************************************************
+skipping: [54.84.221.126] => (item={u'regexp': u'^%solr', u'line': u'%solr   ALL=(ALL) NOPASSWD:ALL'}) 
+skipping: [54.84.221.126] => (item={u'regexp': u'^solr', u'line': u'solr   ALL=(ALL) NOPASSWD:ALL'}) 
+
+TASK [jdk : Download java package] *********************************************
+skipping: [54.84.221.126]
+
+TASK [jdk : Make java home directory] ******************************************
+skipping: [54.84.221.126]
+
+TASK [jdk : Extract jdk in Java Home directoy] *********************************
+skipping: [54.84.221.126]
+
+TASK [jdk : Alternatives java link created] ************************************
+skipping: [54.84.221.126]
+
+TASK [jdk : Alternatives javac link created] ***********************************
+skipping: [54.84.221.126]
+
+TASK [jdk : Check Java is installed] *******************************************
+skipping: [54.84.221.126]
+
+TASK [jdk : Stop further if java is not installed] *****************************
+skipping: [54.84.221.126]
+skipping: [54.84.221.126] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}]) 
+skipping: [54.84.221.126] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}]) 
+skipping: [54.84.221.126] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}]) 
+skipping: [54.84.221.126] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}]) 
+skipping: [54.84.221.126] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}]) 
+skipping: [54.84.221.126] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}]) 
+
+TASK [jdk : set java home] *****************************************************
+skipping: [54.84.221.126] => (item=. /etc/environment) 
+skipping: [54.84.221.126] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))) 
+
+TASK [jdk : source the environment] ********************************************
+skipping: [54.84.221.126] => (item=export PATH=$PATH:$(dirname $(dirname $(readlink -f $(which java))))/bin) 
+
+TASK [solr : Download Solr Package] ********************************************
+skipping: [54.84.221.126]
+
+TASK [solr : Make Solr directory] **********************************************
+skipping: [54.84.221.126]
+
+TASK [solr : Extract solr package] *********************************************
+skipping: [54.84.221.126]
+
+TASK [solr : Make solr symlink] ************************************************
+skipping: [54.84.221.126]
+
+TASK [solr : Create solr init script] ******************************************
+skipping: [54.84.221.126]
+
+TASK [solr : Copy the solr service template] ***********************************
+skipping: [54.84.221.126]
+skipping: [54.84.221.126] => (item=systemctl daemon-reload) 
+
+TASK [solr : Reload solr service configs] **************************************
+skipping: [54.84.221.126] => (item=systemctl enable /lib/systemd/system/solr.service) 
 
 TASK [Gathering Facts] *********************************************************
-ok: [34.228.116.230]
-
-TASK [mysql : Confirm MySQL root password before installing] *******************
-skipping: [54.242.70.142]
-skipping: [54.173.217.183]
-
-TASK [mysql : Install MySQL] ***************************************************
-skipping: [54.173.217.183] => (item=[]) 
-skipping: [54.242.70.142] => (item=[]) 
-
-TASK [mysql : Change bind-address configuration] *******************************
-skipping: [54.173.217.183] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'}) 
-skipping: [54.242.70.142] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'}) 
-
-TASK [mysql : Copy hybris db config template file] *****************************
-skipping: [54.242.70.142]
-skipping: [54.173.217.183]
-
-TASK [mysql : Create hybris db with hybris user] *******************************
-skipping: [54.242.70.142]
-skipping: [54.173.217.183]
-
-TASK [mysql : Ignore errors when hybris DB already exists] *********************
-skipping: [54.242.70.142]
-skipping: [54.173.217.183]
-
-TASK [common : Install unzip package] ******************************************
-skipping: [54.173.217.183] => (item=[]) 
-
-TASK [user : Adding group solr] ************************************************
-skipping: [54.173.217.183]
-
-TASK [user : Adding user solr with password solr in group solr] ****************
-skipping: [54.173.217.183]
-
-TASK [user : configure sudoers] ************************************************
-skipping: [54.173.217.183] => (item={u'regexp': u'^%solr', u'line': u'%solr   ALL=(ALL) NOPASSWD:ALL'}) 
-skipping: [54.173.217.183] => (item={u'regexp': u'^solr', u'line': u'solr   ALL=(ALL) NOPASSWD:ALL'}) 
-
-TASK [jdk : Download java package] *********************************************
-skipping: [54.173.217.183]
-
-TASK [jdk : Make java home directory] ******************************************
-skipping: [54.173.217.183]
-
-TASK [jdk : Extract jdk in Java Home directoy] *********************************
-skipping: [54.173.217.183]
-
-TASK [jdk : Alternatives java link created] ************************************
-skipping: [54.173.217.183]
-
-TASK [jdk : Alternatives javac link created] ***********************************
-skipping: [54.173.217.183]
-
-TASK [jdk : Check Java is installed] *******************************************
-skipping: [54.173.217.183]
-
-TASK [jdk : Stop further if java is not installed] *****************************
-skipping: [54.173.217.183]
-skipping: [54.173.217.183] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}]) 
-skipping: [54.173.217.183] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}]) 
-skipping: [54.173.217.183] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}]) 
-skipping: [54.173.217.183] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}]) 
-skipping: [54.173.217.183] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}]) 
-skipping: [54.173.217.183] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}]) 
-
-TASK [jdk : set java home] *****************************************************
-skipping: [54.173.217.183] => (item=. /etc/environment) 
-skipping: [54.173.217.183] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))) 
-skipping: [54.173.217.183] => (item=export PATH=$PATH:$(dirname $(dirname $(readlink -f $(which java))))/bin) 
-
-TASK [jdk : source the environment] ********************************************
-
-TASK [solr : Download Solr Package] ********************************************
-skipping: [54.173.217.183]
-
-TASK [solr : Make Solr directory] **********************************************
-skipping: [54.173.217.183]
-
-TASK [solr : Extract solr package] *********************************************
-skipping: [54.173.217.183]
-
-TASK [solr : Make solr symlink] ************************************************
-skipping: [54.173.217.183]
-
-TASK [solr : Create solr init script] ******************************************
-skipping: [54.173.217.183]
-
-TASK [solr : Copy the solr service template] ***********************************
-skipping: [54.173.217.183]
+ok: [34.204.52.0]
 
 TASK [mysql : Set MySQL root password before installing] ***********************
-changed: [34.228.116.230]
-
-TASK [solr : Reload solr service configs] **************************************
-skipping: [54.173.217.183] => (item=systemctl enable /lib/systemd/system/solr.service) 
-skipping: [54.173.217.183] => (item=systemctl daemon-reload) 
+changed: [34.204.52.0]
 
 TASK [mysql : command] *********************************************************
-changed: [34.228.116.230]
+changed: [34.204.52.0]
 
 TASK [mysql : Confirm MySQL root password before installing] *******************
-changed: [34.228.116.230]
+changed: [34.204.52.0]
 
 TASK [common : Install unzip package] ******************************************
-changed: [54.242.70.142] => (item=[u'tree', u'unzip'])
+changed: [54.227.116.251] => (item=[u'tree', u'unzip'])
 
 TASK [user : Adding group solr] ************************************************
-changed: [54.242.70.142]
+changed: [54.227.116.251]
 
 TASK [user : Adding user solr with password solr in group solr] ****************
-changed: [54.242.70.142]
-changed: [54.242.70.142] => (item={u'regexp': u'^solr', u'line': u'solr   ALL=(ALL) NOPASSWD:ALL'})
+changed: [54.227.116.251]
+changed: [54.227.116.251] => (item={u'regexp': u'^solr', u'line': u'solr   ALL=(ALL) NOPASSWD:ALL'})
 
 TASK [user : configure sudoers] ************************************************
-changed: [54.242.70.142] => (item={u'regexp': u'^%solr', u'line': u'%solr   ALL=(ALL) NOPASSWD:ALL'})
+changed: [54.227.116.251] => (item={u'regexp': u'^%solr', u'line': u'%solr   ALL=(ALL) NOPASSWD:ALL'})
 
 TASK [jdk : Download java package] *********************************************
-changed: [54.242.70.142]
+changed: [54.227.116.251]
 
 TASK [jdk : Make java home directory] ******************************************
-changed: [54.242.70.142]
-
-TASK [jdk : Extract jdk in Java Home directoy] *********************************
-changed: [54.242.70.142]
-
-TASK [jdk : Alternatives java link created] ************************************
-changed: [54.242.70.142]
-
-TASK [jdk : Alternatives javac link created] ***********************************
-changed: [54.242.70.142]
-
-TASK [jdk : Check Java is installed] *******************************************
-changed: [54.242.70.142]
-
-TASK [jdk : Stop further if java is not installed] *****************************
-skipping: [54.242.70.142]
-changed: [54.242.70.142] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [54.242.70.142] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [54.242.70.142] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [54.242.70.142] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [54.242.70.142] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
-
-TASK [jdk : set java home] *****************************************************
-changed: [54.242.70.142] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [54.242.70.142] => (item=. /etc/environment)
-changed: [54.242.70.142] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
-
-TASK [jdk : source the environment] ********************************************
-changed: [54.242.70.142] => (item=export PATH=$PATH:$(dirname $(dirname $(readlink -f $(which java))))/bin)
-
-TASK [solr : Download Solr Package] ********************************************
-changed: [54.242.70.142]
-
-TASK [solr : Make Solr directory] **********************************************
-changed: [54.242.70.142]
-
-TASK [mysql : Install MySQL] ***************************************************
-changed: [34.228.116.230] => (item=[u'mysql-server-5.7'])
-
-TASK [mysql : Change bind-address configuration] *******************************
-changed: [34.228.116.230] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
+changed: [54.227.116.251]
 
 TASK [apache-http : Install apache2] *******************************************
-changed: [54.173.217.183]
-changed: [54.173.217.183] => (item=proxy)
-
-TASK [mysql : Copy hybris db config template file] *****************************
-changed: [34.228.116.230]
-
-TASK [mysql : Create hybris db with hybris user] *******************************
-changed: [34.228.116.230]
-
-TASK [mysql : Ignore errors when hybris DB already exists] *********************
-skipping: [34.228.116.230]
-
-TASK [common : Install unzip package] ******************************************
-skipping: [34.228.116.230] => (item=[]) 
-
-TASK [user : Adding group solr] ************************************************
-skipping: [34.228.116.230]
-changed: [54.173.217.183] => (item=proxy_ajp)
-
-TASK [user : Adding user solr with password solr in group solr] ****************
-skipping: [34.228.116.230]
-
-TASK [user : configure sudoers] ************************************************
-skipping: [34.228.116.230] => (item={u'regexp': u'^%solr', u'line': u'%solr   ALL=(ALL) NOPASSWD:ALL'}) 
-skipping: [34.228.116.230] => (item={u'regexp': u'^solr', u'line': u'solr   ALL=(ALL) NOPASSWD:ALL'}) 
-
-TASK [jdk : Download java package] *********************************************
-skipping: [34.228.116.230]
-
-TASK [jdk : Make java home directory] ******************************************
-skipping: [34.228.116.230]
+changed: [54.84.221.126]
+changed: [54.84.221.126] => (item=proxy)
+changed: [54.84.221.126] => (item=proxy_ajp)
 
 TASK [jdk : Extract jdk in Java Home directoy] *********************************
-skipping: [34.228.116.230]
+changed: [54.227.116.251]
+changed: [54.84.221.126] => (item=proxy_balancer)
 
 TASK [jdk : Alternatives java link created] ************************************
-skipping: [34.228.116.230]
+changed: [54.227.116.251]
+changed: [54.84.221.126] => (item=proxy_http)
 
 TASK [jdk : Alternatives javac link created] ***********************************
-skipping: [34.228.116.230]
+changed: [54.227.116.251]
+changed: [54.84.221.126] => (item=lbmethod_byrequests)
 
 TASK [jdk : Check Java is installed] *******************************************
-skipping: [34.228.116.230]
+changed: [54.227.116.251]
 
 TASK [jdk : Stop further if java is not installed] *****************************
-skipping: [34.228.116.230]
-skipping: [34.228.116.230] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}]) 
-skipping: [34.228.116.230] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}]) 
-skipping: [34.228.116.230] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}]) 
-skipping: [34.228.116.230] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}]) 
-skipping: [34.228.116.230] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}]) 
+skipping: [54.227.116.251]
+ok: [54.84.221.126] => (item=setenvif)
+changed: [54.227.116.251] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+ok: [54.84.221.126] => (item=mime)
+changed: [54.227.116.251] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [54.84.221.126] => (item=socache_shmcb)
+changed: [54.227.116.251] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+
+TASK [apache-http : Enable required apache2 modules] ***************************
+changed: [54.84.221.126] => (item=ssl)
+changed: [54.227.116.251] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [54.227.116.251] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
 
 TASK [jdk : set java home] *****************************************************
-skipping: [34.228.116.230] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}]) 
-skipping: [34.228.116.230] => (item=. /etc/environment) 
-skipping: [34.228.116.230] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))) 
+changed: [54.227.116.251] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [54.227.116.251] => (item=. /etc/environment)
+
+TASK [apache-http : Copy the site template] ************************************
+changed: [54.84.221.126]
+changed: [54.227.116.251] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
+changed: [54.84.221.126] => (item={u'ip': u'52.91.97.115', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001'})
 
 TASK [jdk : source the environment] ********************************************
-skipping: [34.228.116.230] => (item=export PATH=$PATH:$(dirname $(dirname $(readlink -f $(which java))))/bin) 
-
-TASK [solr : Download Solr Package] ********************************************
-skipping: [34.228.116.230]
-
-TASK [solr : Make Solr directory] **********************************************
-skipping: [34.228.116.230]
-
-TASK [solr : Extract solr package] *********************************************
-skipping: [34.228.116.230]
-
-TASK [solr : Make solr symlink] ************************************************
-skipping: [34.228.116.230]
-
-TASK [solr : Create solr init script] ******************************************
-skipping: [34.228.116.230]
-
-TASK [solr : Copy the solr service template] ***********************************
-skipping: [34.228.116.230]
-changed: [54.173.217.183] => (item=proxy_balancer)
-
-TASK [solr : Reload solr service configs] **************************************
-skipping: [34.228.116.230] => (item=systemctl enable /lib/systemd/system/solr.service) 
-skipping: [34.228.116.230] => (item=systemctl daemon-reload) 
-
-TASK [apache-http : Install apache2] *******************************************
-skipping: [34.228.116.230]
-skipping: [34.228.116.230] => (item=proxy) 
-skipping: [34.228.116.230] => (item=proxy_ajp) 
-skipping: [34.228.116.230] => (item=proxy_balancer) 
-skipping: [34.228.116.230] => (item=proxy_http) 
-skipping: [34.228.116.230] => (item=lbmethod_byrequests) 
-skipping: [34.228.116.230] => (item=setenvif) 
-skipping: [34.228.116.230] => (item=mime) 
-skipping: [34.228.116.230] => (item=socache_shmcb) 
-skipping: [34.228.116.230] => (item=ssl) 
-
-TASK [apache-http : Enable required apache2 modules] ***************************
-
-TASK [apache-http : Copy the domain template] **********************************
-skipping: [34.228.116.230]
-skipping: [34.228.116.230] => (item={u'ip': u'34.202.229.223', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001.hybrishosting.com'}) 
-skipping: [34.228.116.230] => (item={u'ip': u'52.200.5.159', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001.hybrishosting.com'}) 
-skipping: [34.228.116.230] => (item={u'ip': u'54.173.217.183', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001.hybrishosting.com'}) 
-skipping: [34.228.116.230] => (item={u'ip': u'54.242.70.142', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001.hybrishosting.com'}) 
+changed: [54.227.116.251] => (item=export PATH=$PATH:$(dirname $(dirname $(readlink -f $(which java))))/bin)
+changed: [54.84.221.126] => (item={u'ip': u'54.91.169.134', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001'})
+skipping: [54.84.221.126] => (item={u'ip': u'54.84.221.126', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001'}) 
+skipping: [54.84.221.126] => (item={u'ip': u'54.227.116.251', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001'}) 
 
 TASK [apache-http : Add hybris hosts in host file] *****************************
-skipping: [34.228.116.230] => (item={u'ip': u'34.228.116.230', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001.hybrishosting.com'}) 
+skipping: [54.84.221.126] => (item={u'ip': u'34.204.52.0', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001'}) 
 
-TASK [apache-http : Enable the domain] *****************************************
-skipping: [34.228.116.230]
-
-RUNNING HANDLER [mysql : Restart MySql] ****************************************
-changed: [54.173.217.183] => (item=proxy_http)
-changed: [54.173.217.183] => (item=lbmethod_byrequests)
-ok: [54.173.217.183] => (item=setenvif)
-ok: [54.173.217.183] => (item=mime)
-changed: [54.173.217.183] => (item=socache_shmcb)
-changed: [54.173.217.183] => (item=ssl)
-
-TASK [apache-http : Enable required apache2 modules] ***************************
-
-TASK [solr : Extract solr package] *********************************************
-changed: [54.242.70.142]
-
-TASK [mysql : Restart MySql] ***************************************************
-changed: [34.228.116.230]
-
-TASK [solr : Make solr symlink] ************************************************
-changed: [54.242.70.142]
-
-TASK [solr : Create solr init script] ******************************************
-changed: [54.242.70.142]
-
-TASK [apache-http : Copy the domain template] **********************************
-changed: [54.173.217.183]
-changed: [54.173.217.183] => (item={u'ip': u'34.202.229.223', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001.hybrishosting.com'})
-
-TASK [solr : Copy the solr service template] ***********************************
-changed: [54.242.70.142]
-changed: [54.173.217.183] => (item={u'ip': u'52.200.5.159', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001.hybrishosting.com'})
-skipping: [54.173.217.183] => (item={u'ip': u'54.173.217.183', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001.hybrishosting.com'}) 
-skipping: [54.173.217.183] => (item={u'ip': u'54.242.70.142', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001.hybrishosting.com'}) 
-
-TASK [apache-http : Add hybris hosts in host file] *****************************
-skipping: [54.173.217.183] => (item={u'ip': u'34.228.116.230', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001.hybrishosting.com'}) 
-changed: [54.242.70.142] => (item=systemctl daemon-reload)
-
-TASK [apache-http : Enable the domain] *****************************************
-changed: [54.173.217.183]
+TASK [apache-http : Enable the site] *******************************************
+changed: [54.84.221.126]
 
 RUNNING HANDLER [apache-http : Restart apache2] ********************************
 
-TASK [solr : Reload solr service configs] **************************************
-changed: [54.242.70.142] => (item=systemctl enable /lib/systemd/system/solr.service)
+TASK [solr : Download Solr Package] ********************************************
+changed: [54.227.116.251]
 
 TASK [apache-http : Restart apache2] *******************************************
-changed: [54.173.217.183]
+changed: [54.84.221.126]
+
+TASK [mysql : Install MySQL] ***************************************************
+changed: [34.204.52.0] => (item=[u'mysql-server-5.7'])
+
+TASK [solr : Make Solr directory] **********************************************
+changed: [54.227.116.251]
+
+TASK [mysql : Change bind-address configuration] *******************************
+changed: [34.204.52.0] => (item={u'regexp': u'^bind-address', u'line': u'bind-address = 0.0.0.0'})
+
+TASK [mysql : Copy hybris db config template file] *****************************
+changed: [34.204.52.0]
+
+TASK [mysql : Create hybris db with hybris user] *******************************
+changed: [34.204.52.0]
+
+TASK [mysql : Ignore errors when hybris DB already exists] *********************
+skipping: [34.204.52.0]
+
+TASK [common : Install unzip package] ******************************************
+skipping: [34.204.52.0] => (item=[]) 
+
+TASK [user : Adding group solr] ************************************************
+skipping: [34.204.52.0]
+
+TASK [user : Adding user solr with password solr in group solr] ****************
+skipping: [34.204.52.0]
+skipping: [34.204.52.0] => (item={u'regexp': u'^solr', u'line': u'solr   ALL=(ALL) NOPASSWD:ALL'}) 
+
+TASK [user : configure sudoers] ************************************************
+skipping: [34.204.52.0] => (item={u'regexp': u'^%solr', u'line': u'%solr   ALL=(ALL) NOPASSWD:ALL'}) 
+
+TASK [jdk : Download java package] *********************************************
+skipping: [34.204.52.0]
+
+TASK [jdk : Make java home directory] ******************************************
+skipping: [34.204.52.0]
+
+TASK [jdk : Extract jdk in Java Home directoy] *********************************
+skipping: [34.204.52.0]
+
+TASK [jdk : Alternatives java link created] ************************************
+skipping: [34.204.52.0]
+
+TASK [jdk : Alternatives javac link created] ***********************************
+skipping: [34.204.52.0]
+
+TASK [jdk : Check Java is installed] *******************************************
+skipping: [34.204.52.0]
+
+TASK [jdk : Stop further if java is not installed] *****************************
+skipping: [34.204.52.0]
+skipping: [34.204.52.0] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}]) 
+skipping: [34.204.52.0] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}]) 
+skipping: [34.204.52.0] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}]) 
+skipping: [34.204.52.0] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}]) 
+skipping: [34.204.52.0] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}]) 
+
+TASK [jdk : set java home] *****************************************************
+skipping: [34.204.52.0] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}]) 
+skipping: [34.204.52.0] => (item=. /etc/environment) 
+skipping: [34.204.52.0] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))) 
+
+TASK [jdk : source the environment] ********************************************
+skipping: [34.204.52.0] => (item=export PATH=$PATH:$(dirname $(dirname $(readlink -f $(which java))))/bin) 
+
+TASK [solr : Download Solr Package] ********************************************
+skipping: [34.204.52.0]
+
+TASK [solr : Make Solr directory] **********************************************
+skipping: [34.204.52.0]
+
+TASK [solr : Extract solr package] *********************************************
+skipping: [34.204.52.0]
+
+TASK [solr : Make solr symlink] ************************************************
+skipping: [34.204.52.0]
+
+TASK [solr : Create solr init script] ******************************************
+skipping: [34.204.52.0]
+
+TASK [solr : Copy the solr service template] ***********************************
+skipping: [34.204.52.0]
+skipping: [34.204.52.0] => (item=systemctl daemon-reload) 
+
+TASK [solr : Reload solr service configs] **************************************
+skipping: [34.204.52.0] => (item=systemctl enable /lib/systemd/system/solr.service) 
+
+TASK [apache-http : Install apache2] *******************************************
+skipping: [34.204.52.0]
+skipping: [34.204.52.0] => (item=proxy) 
+skipping: [34.204.52.0] => (item=proxy_ajp) 
+skipping: [34.204.52.0] => (item=proxy_balancer) 
+skipping: [34.204.52.0] => (item=proxy_http) 
+skipping: [34.204.52.0] => (item=lbmethod_byrequests) 
+skipping: [34.204.52.0] => (item=setenvif) 
+skipping: [34.204.52.0] => (item=mime) 
+skipping: [34.204.52.0] => (item=socache_shmcb) 
+skipping: [34.204.52.0] => (item=ssl) 
+
+TASK [apache-http : Enable required apache2 modules] ***************************
+
+TASK [apache-http : Copy the site template] ************************************
+skipping: [34.204.52.0]
+skipping: [34.204.52.0] => (item={u'ip': u'52.91.97.115', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001'}) 
+skipping: [34.204.52.0] => (item={u'ip': u'54.91.169.134', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001'}) 
+skipping: [34.204.52.0] => (item={u'ip': u'54.84.221.126', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001'}) 
+skipping: [34.204.52.0] => (item={u'ip': u'54.227.116.251', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001'}) 
+
+TASK [apache-http : Add hybris hosts in host file] *****************************
+skipping: [34.204.52.0] => (item={u'ip': u'34.204.52.0', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001'}) 
+
+TASK [apache-http : Enable the site] *******************************************
+skipping: [34.204.52.0]
+
+RUNNING HANDLER [mysql : Restart MySql] ****************************************
+
+TASK [solr : Extract solr package] *********************************************
+changed: [54.227.116.251]
+
+TASK [mysql : Restart MySql] ***************************************************
+changed: [34.204.52.0]
+
+TASK [solr : Make solr symlink] ************************************************
+changed: [54.227.116.251]
+
+TASK [solr : Create solr init script] ******************************************
+changed: [54.227.116.251]
+
+TASK [solr : Copy the solr service template] ***********************************
+changed: [54.227.116.251]
+changed: [54.227.116.251] => (item=systemctl daemon-reload)
+
+TASK [solr : Reload solr service configs] **************************************
+changed: [54.227.116.251] => (item=systemctl enable /lib/systemd/system/solr.service)
+
+TASK [apache-http : Install apache2] *******************************************
+skipping: [54.227.116.251]
+skipping: [54.227.116.251] => (item=proxy) 
+skipping: [54.227.116.251] => (item=proxy_ajp) 
+skipping: [54.227.116.251] => (item=proxy_balancer) 
+skipping: [54.227.116.251] => (item=proxy_http) 
+skipping: [54.227.116.251] => (item=lbmethod_byrequests) 
+skipping: [54.227.116.251] => (item=setenvif) 
+skipping: [54.227.116.251] => (item=mime) 
+skipping: [54.227.116.251] => (item=socache_shmcb) 
+
+TASK [apache-http : Enable required apache2 modules] ***************************
+skipping: [54.227.116.251] => (item=ssl) 
+
+TASK [apache-http : Copy the site template] ************************************
+skipping: [54.227.116.251]
+skipping: [54.227.116.251] => (item={u'ip': u'52.91.97.115', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001'}) 
+skipping: [54.227.116.251] => (item={u'ip': u'54.91.169.134', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001'}) 
+skipping: [54.227.116.251] => (item={u'ip': u'54.84.221.126', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001'}) 
+skipping: [54.227.116.251] => (item={u'ip': u'54.227.116.251', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001'}) 
+
+TASK [apache-http : Add hybris hosts in host file] *****************************
+skipping: [54.227.116.251] => (item={u'ip': u'34.204.52.0', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001'}) 
+
+TASK [apache-http : Enable the site] *******************************************
+skipping: [54.227.116.251]
 
 RUNNING HANDLER [solr : Restart solr] ******************************************
 
-TASK [apache-http : Install apache2] *******************************************
-skipping: [54.242.70.142]
-
 TASK [solr : Restart solr] *****************************************************
-changed: [54.242.70.142]
-skipping: [54.242.70.142] => (item=proxy) 
-skipping: [54.242.70.142] => (item=proxy_ajp) 
-skipping: [54.242.70.142] => (item=proxy_balancer) 
-skipping: [54.242.70.142] => (item=proxy_http) 
-skipping: [54.242.70.142] => (item=lbmethod_byrequests) 
-skipping: [54.242.70.142] => (item=setenvif) 
-skipping: [54.242.70.142] => (item=mime) 
-skipping: [54.242.70.142] => (item=socache_shmcb) 
-
-TASK [apache-http : Enable required apache2 modules] ***************************
-skipping: [54.242.70.142] => (item=ssl) 
-
-TASK [apache-http : Copy the domain template] **********************************
-skipping: [54.242.70.142]
-skipping: [54.242.70.142] => (item={u'ip': u'34.202.229.223', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001.hybrishosting.com'}) 
-skipping: [54.242.70.142] => (item={u'ip': u'52.200.5.159', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001.hybrishosting.com'}) 
-skipping: [54.242.70.142] => (item={u'ip': u'54.173.217.183', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001.hybrishosting.com'}) 
-skipping: [54.242.70.142] => (item={u'ip': u'54.242.70.142', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001.hybrishosting.com'}) 
-skipping: [54.242.70.142] => (item={u'ip': u'34.228.116.230', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001.hybrishosting.com'}) 
-
-TASK [apache-http : Add hybris hosts in host file] *****************************
-
-TASK [apache-http : Enable the domain] *****************************************
-skipping: [54.242.70.142]
+changed: [54.227.116.251]
 
 PLAY [adm,app] *****************************************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [34.202.229.223]
-ok: [52.200.5.159]
+ok: [54.91.169.134]
+ok: [52.91.97.115]
 
 TASK [common : Install unzip package] ******************************************
-changed: [34.202.229.223] => (item=[u'tree', u'unzip'])
-changed: [52.200.5.159] => (item=[u'tree', u'unzip'])
+changed: [52.91.97.115] => (item=[u'tree', u'unzip'])
+changed: [54.91.169.134] => (item=[u'tree', u'unzip'])
 
 TASK [user : Adding group hybris] **********************************************
-changed: [34.202.229.223]
-changed: [52.200.5.159]
+changed: [54.91.169.134]
+changed: [52.91.97.115]
 
 TASK [user : Adding user hybris with password hybris in group hybris] **********
-changed: [52.200.5.159]
-changed: [34.202.229.223]
+changed: [54.91.169.134]
+changed: [52.91.97.115]
 
 TASK [user : configure sudoers] ************************************************
-changed: [34.202.229.223] => (item={u'regexp': u'^hybris', u'line': u'hybris   ALL=(ALL) NOPASSWD:ALL'})
-changed: [34.202.229.223] => (item={u'regexp': u'^%hybris', u'line': u'%hybris   ALL=(ALL) NOPASSWD:ALL'})
-changed: [52.200.5.159] => (item={u'regexp': u'^hybris', u'line': u'hybris   ALL=(ALL) NOPASSWD:ALL'})
-changed: [52.200.5.159] => (item={u'regexp': u'^%hybris', u'line': u'%hybris   ALL=(ALL) NOPASSWD:ALL'})
+changed: [52.91.97.115] => (item={u'regexp': u'^hybris', u'line': u'hybris   ALL=(ALL) NOPASSWD:ALL'})
+changed: [54.91.169.134] => (item={u'regexp': u'^hybris', u'line': u'hybris   ALL=(ALL) NOPASSWD:ALL'})
+changed: [52.91.97.115] => (item={u'regexp': u'^%hybris', u'line': u'%hybris   ALL=(ALL) NOPASSWD:ALL'})
+changed: [54.91.169.134] => (item={u'regexp': u'^%hybris', u'line': u'%hybris   ALL=(ALL) NOPASSWD:ALL'})
 
 TASK [jdk : Download java package] *********************************************
-changed: [52.200.5.159]
-changed: [34.202.229.223]
+changed: [54.91.169.134]
+changed: [52.91.97.115]
 
 TASK [jdk : Make java home directory] ******************************************
-changed: [34.202.229.223]
-changed: [52.200.5.159]
+changed: [54.91.169.134]
+changed: [52.91.97.115]
 
 TASK [jdk : Extract jdk in Java Home directoy] *********************************
-changed: [34.202.229.223]
-changed: [52.200.5.159]
+changed: [52.91.97.115]
+changed: [54.91.169.134]
 
 TASK [jdk : Alternatives java link created] ************************************
-changed: [34.202.229.223]
-changed: [52.200.5.159]
+changed: [54.91.169.134]
+changed: [52.91.97.115]
 
 TASK [jdk : Alternatives javac link created] ***********************************
-changed: [34.202.229.223]
-changed: [52.200.5.159]
+changed: [54.91.169.134]
+changed: [52.91.97.115]
 
 TASK [jdk : Check Java is installed] *******************************************
-changed: [34.202.229.223]
-changed: [52.200.5.159]
+changed: [52.91.97.115]
+changed: [54.91.169.134]
 
 TASK [jdk : Stop further if java is not installed] *****************************
-skipping: [34.202.229.223]
-skipping: [52.200.5.159]
+skipping: [52.91.97.115]
+skipping: [54.91.169.134]
 
 TASK [jdk : set java home] *****************************************************
-changed: [52.200.5.159] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [34.202.229.223] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [34.202.229.223] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [34.202.229.223] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [34.202.229.223] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [52.200.5.159] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [34.202.229.223] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [34.202.229.223] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [52.200.5.159] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [52.200.5.159] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [52.200.5.159] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [52.200.5.159] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [52.91.97.115] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [54.91.169.134] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [54.91.169.134] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [52.91.97.115] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [54.91.169.134] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [52.91.97.115] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [52.91.97.115] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [54.91.169.134] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [52.91.97.115] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [54.91.169.134] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'JAVA_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [52.91.97.115] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [54.91.169.134] => (item=[u'/etc/profile.d/java.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/usr/lib/jvm/java-8-oracle'}])
 
 TASK [jdk : source the environment] ********************************************
-changed: [34.202.229.223] => (item=. /etc/environment)
-changed: [52.200.5.159] => (item=. /etc/environment)
-changed: [34.202.229.223] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
-changed: [52.200.5.159] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
-changed: [34.202.229.223] => (item=export PATH=$PATH:$(dirname $(dirname $(readlink -f $(which java))))/bin)
-changed: [52.200.5.159] => (item=export PATH=$PATH:$(dirname $(dirname $(readlink -f $(which java))))/bin)
+changed: [52.91.97.115] => (item=. /etc/environment)
+changed: [54.91.169.134] => (item=. /etc/environment)
+changed: [52.91.97.115] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
+changed: [54.91.169.134] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
+changed: [54.91.169.134] => (item=export PATH=$PATH:$(dirname $(dirname $(readlink -f $(which java))))/bin)
+changed: [52.91.97.115] => (item=export PATH=$PATH:$(dirname $(dirname $(readlink -f $(which java))))/bin)
 
 TASK [hybris : Install nfs-server] *********************************************
-skipping: [52.200.5.159]
-changed: [34.202.229.223]
+skipping: [54.91.169.134]
+changed: [52.91.97.115]
 
 TASK [hybris : Create nfs share folder] ****************************************
-skipping: [52.200.5.159]
-changed: [34.202.229.223]
+skipping: [54.91.169.134]
+changed: [52.91.97.115]
 
 TASK [hybris : Export filesystem configuration] ********************************
-skipping: [34.202.229.223] => (item={u'ip': u'34.202.229.223', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001.hybrishosting.com'}) 
-skipping: [52.200.5.159] => (item={u'ip': u'52.200.5.159', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001.hybrishosting.com'}) 
-skipping: [52.200.5.159] => (item={u'ip': u'34.202.229.223', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001.hybrishosting.com'}) 
-skipping: [52.200.5.159] => (item={u'ip': u'54.173.217.183', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001.hybrishosting.com'}) 
-skipping: [52.200.5.159] => (item={u'ip': u'54.242.70.142', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001.hybrishosting.com'}) 
-skipping: [52.200.5.159] => (item={u'ip': u'34.228.116.230', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001.hybrishosting.com'}) 
-changed: [34.202.229.223] => (item={u'ip': u'52.200.5.159', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001.hybrishosting.com'})
-skipping: [34.202.229.223] => (item={u'ip': u'54.173.217.183', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001.hybrishosting.com'}) 
-skipping: [34.202.229.223] => (item={u'ip': u'54.242.70.142', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001.hybrishosting.com'}) 
-skipping: [34.202.229.223] => (item={u'ip': u'34.228.116.230', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001.hybrishosting.com'}) 
+skipping: [52.91.97.115] => (item={u'ip': u'52.91.97.115', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001'}) 
+skipping: [54.91.169.134] => (item={u'ip': u'54.91.169.134', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001'}) 
+skipping: [54.91.169.134] => (item={u'ip': u'52.91.97.115', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001'}) 
+skipping: [54.91.169.134] => (item={u'ip': u'54.84.221.126', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001'}) 
+skipping: [54.91.169.134] => (item={u'ip': u'54.227.116.251', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001'}) 
+skipping: [54.91.169.134] => (item={u'ip': u'34.204.52.0', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001'}) 
+changed: [52.91.97.115] => (item={u'ip': u'54.91.169.134', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001'})
+skipping: [52.91.97.115] => (item={u'ip': u'54.84.221.126', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001'}) 
+skipping: [52.91.97.115] => (item={u'ip': u'54.227.116.251', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001'}) 
+skipping: [52.91.97.115] => (item={u'ip': u'34.204.52.0', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001'}) 
 
 TASK [hybris : Export nfs filesystem] ******************************************
-skipping: [52.200.5.159]
-changed: [34.202.229.223]
+skipping: [54.91.169.134]
+changed: [52.91.97.115]
 
 TASK [hybris : Install nfs client] *********************************************
-skipping: [34.202.229.223]
-changed: [52.200.5.159]
+skipping: [52.91.97.115]
+changed: [54.91.169.134]
 
 TASK [hybris : Create nfs share folder] ****************************************
-skipping: [34.202.229.223]
-changed: [52.200.5.159]
+skipping: [52.91.97.115]
+changed: [54.91.169.134]
 
 TASK [hybris : Mount nfs] ******************************************************
-skipping: [34.202.229.223]
-changed: [52.200.5.159]
+skipping: [52.91.97.115]
+changed: [54.91.169.134]
 
 TASK [hybris : Download Hybris Package] ****************************************
-changed: [34.202.229.223]
-changed: [52.200.5.159]
+changed: [54.91.169.134]
+changed: [52.91.97.115]
 
 TASK [hybris : Make Hybris directory] ******************************************
-changed: [52.200.5.159]
-changed: [34.202.229.223]
+changed: [52.91.97.115]
+changed: [54.91.169.134]
 
 TASK [hybris : Make hybris symlink] ********************************************
-changed: [34.202.229.223]
-changed: [52.200.5.159]
+changed: [52.91.97.115]
+changed: [54.91.169.134]
 
 TASK [hybris : Extract hybris in Hybris directoy] ******************************
-changed: [34.202.229.223]
-changed: [52.200.5.159]
+changed: [54.91.169.134]
+changed: [52.91.97.115]
 
 TASK [hybris : set hybris home] ************************************************
-changed: [52.200.5.159] => (item=[u'/etc/environment', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.2.0/hybris'}])
-changed: [34.202.229.223] => (item=[u'/etc/environment', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.2.0/hybris'}])
-changed: [52.200.5.159] => (item=[u'/etc/environment', {u'regexp': u'^ANT_HOME=', u'line': u'ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1'}])
-changed: [34.202.229.223] => (item=[u'/etc/environment', {u'regexp': u'^ANT_HOME=', u'line': u'ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1'}])
-changed: [52.200.5.159] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'ANT_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [34.202.229.223] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'ANT_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [52.200.5.159] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [34.202.229.223] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [52.200.5.159] => (item=[u'/etc/profile', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.2.0/hybris'}])
-changed: [34.202.229.223] => (item=[u'/etc/profile', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.2.0/hybris'}])
-changed: [52.200.5.159] => (item=[u'/etc/profile', {u'regexp': u'^ANT_HOME=', u'line': u'ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1'}])
-changed: [34.202.229.223] => (item=[u'/etc/profile', {u'regexp': u'^ANT_HOME=', u'line': u'ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1'}])
-changed: [52.200.5.159] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'ANT_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [34.202.229.223] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'ANT_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [52.200.5.159] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [34.202.229.223] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [52.200.5.159] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.2.0/hybris'}])
-changed: [34.202.229.223] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.2.0/hybris'}])
-changed: [52.200.5.159] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^ANT_HOME=', u'line': u'ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1'}])
-changed: [34.202.229.223] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^ANT_HOME=', u'line': u'ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1'}])
-changed: [34.202.229.223] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'ANT_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [52.200.5.159] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'ANT_HOME=/usr/lib/jvm/java-8-oracle'}])
-changed: [34.202.229.223] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle'}])
-changed: [52.200.5.159] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [52.91.97.115] => (item=[u'/etc/environment', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.2.0/hybris'}])
+changed: [54.91.169.134] => (item=[u'/etc/environment', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.2.0/hybris'}])
+changed: [52.91.97.115] => (item=[u'/etc/environment', {u'regexp': u'^ANT_HOME=', u'line': u'ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1'}])
+changed: [54.91.169.134] => (item=[u'/etc/environment', {u'regexp': u'^ANT_HOME=', u'line': u'ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1'}])
+changed: [52.91.97.115] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'ANT_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [54.91.169.134] => (item=[u'/etc/environment', {u'regexp': u'^JAVA_HOME=', u'line': u'ANT_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [52.91.97.115] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [52.91.97.115] => (item=[u'/etc/profile', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.2.0/hybris'}])
+changed: [54.91.169.134] => (item=[u'/etc/environment', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [52.91.97.115] => (item=[u'/etc/profile', {u'regexp': u'^ANT_HOME=', u'line': u'ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1'}])
+changed: [54.91.169.134] => (item=[u'/etc/profile', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.2.0/hybris'}])
+changed: [54.91.169.134] => (item=[u'/etc/profile', {u'regexp': u'^ANT_HOME=', u'line': u'ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1'}])
+changed: [52.91.97.115] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'ANT_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [54.91.169.134] => (item=[u'/etc/profile', {u'regexp': u'^JAVA_HOME=', u'line': u'ANT_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [52.91.97.115] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [54.91.169.134] => (item=[u'/etc/profile', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [52.91.97.115] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.2.0/hybris'}])
+changed: [54.91.169.134] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^HYBRIS_HOME=', u'line': u'HYBRIS_HOME=/opt/Hybris-6.2.0/hybris'}])
+changed: [52.91.97.115] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^ANT_HOME=', u'line': u'ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1'}])
+changed: [54.91.169.134] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^ANT_HOME=', u'line': u'ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1'}])
+changed: [52.91.97.115] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'ANT_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [54.91.169.134] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^JAVA_HOME=', u'line': u'ANT_HOME=/usr/lib/jvm/java-8-oracle'}])
+changed: [52.91.97.115] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle'}])
+changed: [54.91.169.134] => (item=[u'/etc/profile.d/hybris.sh', {u'regexp': u'^PATH=', u'line': u'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle'}])
 
 TASK [hybris : source the environment] *****************************************
-changed: [34.202.229.223] => (item=. /etc/environment)
-changed: [52.200.5.159] => (item=. /etc/environment)
-changed: [34.202.229.223] => (item=export HYBRIS_HOME=/opt/Hybris-6.2.0/hybris)
-changed: [52.200.5.159] => (item=export HYBRIS_HOME=/opt/Hybris-6.2.0/hybris)
-changed: [34.202.229.223] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
-changed: [52.200.5.159] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
-changed: [34.202.229.223] => (item=export ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1)
-changed: [52.200.5.159] => (item=export ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1)
-changed: [34.202.229.223] => (item=export PATH=$PATH:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle)
-changed: [52.200.5.159] => (item=export PATH=$PATH:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle)
+changed: [52.91.97.115] => (item=. /etc/environment)
+changed: [54.91.169.134] => (item=. /etc/environment)
+changed: [52.91.97.115] => (item=export HYBRIS_HOME=/opt/Hybris-6.2.0/hybris)
+changed: [54.91.169.134] => (item=export HYBRIS_HOME=/opt/Hybris-6.2.0/hybris)
+changed: [52.91.97.115] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
+changed: [54.91.169.134] => (item=export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java)))))
+changed: [54.91.169.134] => (item=export ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1)
+changed: [52.91.97.115] => (item=export ANT_HOME=/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1)
+changed: [54.91.169.134] => (item=export PATH=$PATH:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle)
+changed: [52.91.97.115] => (item=export PATH=$PATH:/opt/Hybris-6.2.0/hybris/bin/platform/apache-ant-1.9.1/bin:/usr/lib/jvm/java-8-oracle)
 
 TASK [hybris : Install hybris recipe] ******************************************
-changed: [34.202.229.223] => (item=/opt/hybris/installer/install.sh -r b2c_acc)
-changed: [52.200.5.159] => (item=/opt/hybris/installer/install.sh -r b2c_acc)
+changed: [54.91.169.134] => (item=/opt/hybris/installer/install.sh -r b2c_acc)
+changed: [52.91.97.115] => (item=/opt/hybris/installer/install.sh -r b2c_acc)
 
 TASK [hybris : Chown Hybris Dir] ***********************************************
-ok: [34.202.229.223] => (item=/var/nfs/)
-ok: [52.200.5.159] => (item=/var/nfs/)
-ok: [34.202.229.223] => (item=/opt/Hybris-6.2.0)
-ok: [52.200.5.159] => (item=/opt/Hybris-6.2.0)
+ok: [52.91.97.115] => (item=/var/nfs/)
+ok: [54.91.169.134] => (item=/var/nfs/)
+ok: [52.91.97.115] => (item=/opt/Hybris-6.2.0)
+ok: [54.91.169.134] => (item=/opt/Hybris-6.2.0)
 
 TASK [hybris : Copy templates] *************************************************
-changed: [34.202.229.223] => (item={u'owner': u'root', u'filepath': u'/lib/systemd/system/hybris.service', u'group': u'root', u'filename': u'hybris.service'})
-changed: [52.200.5.159] => (item={u'owner': u'root', u'filepath': u'/lib/systemd/system/hybris.service', u'group': u'root', u'filename': u'hybris.service'})
-changed: [34.202.229.223] => (item={u'owner': u'hybris', u'filepath': u'/opt/Hybris-6.2.0/hybris/config/tomcat/conf/server.xml', u'group': u'hybris', u'filename': u'server.xml'})
-changed: [34.202.229.223] => (item={u'owner': u'hybris', u'filepath': u'/opt/Hybris-6.2.0/hybris/config/local.properties', u'group': u'hybris', u'filename': u'local_properties.j2'})
-changed: [34.202.229.223] => (item={u'owner': u'root', u'filepath': u'/tmp/standaloneSolrServerConfig.impex', u'group': u'root', u'filename': u'standaloneSolrServerConfig.j2'})
-changed: [52.200.5.159] => (item={u'owner': u'hybris', u'filepath': u'/opt/Hybris-6.2.0/hybris/config/tomcat/conf/server.xml', u'group': u'hybris', u'filename': u'server.xml'})
-changed: [52.200.5.159] => (item={u'owner': u'hybris', u'filepath': u'/opt/Hybris-6.2.0/hybris/config/local.properties', u'group': u'hybris', u'filename': u'local_properties.j2'})
-changed: [52.200.5.159] => (item={u'owner': u'root', u'filepath': u'/tmp/standaloneSolrServerConfig.impex', u'group': u'root', u'filename': u'standaloneSolrServerConfig.j2'})
+changed: [54.91.169.134] => (item={u'owner': u'root', u'filepath': u'/lib/systemd/system/hybris.service', u'group': u'root', u'filename': u'hybris.service'})
+changed: [52.91.97.115] => (item={u'owner': u'root', u'filepath': u'/lib/systemd/system/hybris.service', u'group': u'root', u'filename': u'hybris.service'})
+changed: [54.91.169.134] => (item={u'owner': u'hybris', u'filepath': u'/opt/Hybris-6.2.0/hybris/config/tomcat/conf/server.xml', u'group': u'hybris', u'filename': u'server.xml'})
+changed: [52.91.97.115] => (item={u'owner': u'hybris', u'filepath': u'/opt/Hybris-6.2.0/hybris/config/tomcat/conf/server.xml', u'group': u'hybris', u'filename': u'server.xml'})
+changed: [54.91.169.134] => (item={u'owner': u'hybris', u'filepath': u'/opt/Hybris-6.2.0/hybris/config/local.properties', u'group': u'hybris', u'filename': u'local_properties.j2'})
+changed: [52.91.97.115] => (item={u'owner': u'hybris', u'filepath': u'/opt/Hybris-6.2.0/hybris/config/local.properties', u'group': u'hybris', u'filename': u'local_properties.j2'})
+changed: [54.91.169.134] => (item={u'owner': u'root', u'filepath': u'/tmp/standaloneSolrServerConfig.impex', u'group': u'root', u'filename': u'standaloneSolrServerConfig.j2'})
+changed: [52.91.97.115] => (item={u'owner': u'root', u'filepath': u'/tmp/standaloneSolrServerConfig.impex', u'group': u'root', u'filename': u'standaloneSolrServerConfig.j2'})
 
 TASK [hybris : Reload hybris service configs] **********************************
-changed: [34.202.229.223] => (item=systemctl daemon-reload)
-changed: [52.200.5.159] => (item=systemctl daemon-reload)
-changed: [34.202.229.223] => (item=systemctl enable /lib/systemd/system/hybris.service)
-changed: [52.200.5.159] => (item=systemctl enable /lib/systemd/system/hybris.service)
+changed: [52.91.97.115] => (item=systemctl daemon-reload)
+changed: [54.91.169.134] => (item=systemctl daemon-reload)
+changed: [52.91.97.115] => (item=systemctl enable /lib/systemd/system/hybris.service)
+changed: [54.91.169.134] => (item=systemctl enable /lib/systemd/system/hybris.service)
 
 TASK [hybris : Add db and srch hosts in host file] *****************************
-skipping: [34.202.229.223] => (item={u'ip': u'52.200.5.159', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001.hybrishosting.com'}) 
-skipping: [34.202.229.223] => (item={u'ip': u'34.202.229.223', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001.hybrishosting.com'}) 
-skipping: [34.202.229.223] => (item={u'ip': u'54.173.217.183', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001.hybrishosting.com'}) 
-skipping: [52.200.5.159] => (item={u'ip': u'52.200.5.159', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001.hybrishosting.com'}) 
-skipping: [52.200.5.159] => (item={u'ip': u'34.202.229.223', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001.hybrishosting.com'}) 
-skipping: [52.200.5.159] => (item={u'ip': u'54.173.217.183', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001.hybrishosting.com'}) 
-changed: [34.202.229.223] => (item={u'ip': u'54.242.70.142', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001.hybrishosting.com'})
-changed: [52.200.5.159] => (item={u'ip': u'54.242.70.142', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001.hybrishosting.com'})
-changed: [34.202.229.223] => (item={u'ip': u'34.228.116.230', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001.hybrishosting.com'})
-changed: [52.200.5.159] => (item={u'ip': u'34.228.116.230', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001.hybrishosting.com'})
+skipping: [52.91.97.115] => (item={u'ip': u'54.91.169.134', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001'}) 
+skipping: [52.91.97.115] => (item={u'ip': u'54.84.221.126', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001'}) 
+skipping: [52.91.97.115] => (item={u'ip': u'52.91.97.115', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001'}) 
+skipping: [54.91.169.134] => (item={u'ip': u'52.91.97.115', u'type': u'adm', u'name': u'awsb2ch62-d-aws-adm-001'}) 
+skipping: [54.91.169.134] => (item={u'ip': u'54.84.221.126', u'type': u'web', u'name': u'awsb2ch62-d-aws-web-001'}) 
+skipping: [54.91.169.134] => (item={u'ip': u'54.91.169.134', u'type': u'app', u'name': u'awsb2ch62-d-aws-app-001'}) 
+changed: [52.91.97.115] => (item={u'ip': u'54.227.116.251', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001'})
+changed: [54.91.169.134] => (item={u'ip': u'54.227.116.251', u'type': u'srch', u'name': u'awsb2ch62-d-aws-srch-001'})
+changed: [54.91.169.134] => (item={u'ip': u'34.204.52.0', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001'})
+changed: [52.91.97.115] => (item={u'ip': u'34.204.52.0', u'type': u'db', u'name': u'awsb2ch62-d-aws-db-001'})
 
 TASK [hybris : Download db driver] *********************************************
-changed: [34.202.229.223]
-changed: [52.200.5.159]
+changed: [54.91.169.134]
+changed: [52.91.97.115]
 
 TASK [hybris : Chown Hybris Dir] ***********************************************
-ok: [34.202.229.223] => (item=/var/nfs/)
-ok: [52.200.5.159] => (item=/var/nfs/)
-ok: [34.202.229.223] => (item=/opt/Hybris-6.2.0)
-ok: [52.200.5.159] => (item=/opt/Hybris-6.2.0)
+ok: [52.91.97.115] => (item=/var/nfs/)
+ok: [54.91.169.134] => (item=/var/nfs/)
+ok: [52.91.97.115] => (item=/opt/Hybris-6.2.0)
+ok: [54.91.169.134] => (item=/opt/Hybris-6.2.0)
 
 TASK [hybris : Build hybris app] ***********************************************
-changed: [34.202.229.223] => (item=. /opt/Hybris-6.2.0/hybris/bin/platform/setantenv.sh)
-changed: [52.200.5.159] => (item=. /opt/Hybris-6.2.0/hybris/bin/platform/setantenv.sh)
-changed: [34.202.229.223] => (item=ant clean all)
-changed: [52.200.5.159] => (item=ant clean all)
+changed: [52.91.97.115] => (item=. /opt/Hybris-6.2.0/hybris/bin/platform/setantenv.sh)
+changed: [54.91.169.134] => (item=. /opt/Hybris-6.2.0/hybris/bin/platform/setantenv.sh)
+changed: [54.91.169.134] => (item=ant clean all)
+changed: [52.91.97.115] => (item=ant clean all)
 
 TASK [hybris : Chown Hybris Dir] ***********************************************
-ok: [34.202.229.223] => (item=/var/nfs/)
-ok: [34.202.229.223] => (item=/opt/Hybris-6.2.0)
-ok: [52.200.5.159] => (item=/var/nfs/)
-ok: [52.200.5.159] => (item=/opt/Hybris-6.2.0)
+ok: [54.91.169.134] => (item=/var/nfs/)
+ok: [52.91.97.115] => (item=/var/nfs/)
+ok: [54.91.169.134] => (item=/opt/Hybris-6.2.0)
+ok: [52.91.97.115] => (item=/opt/Hybris-6.2.0)
 
 TASK [hybris : DB Initialization] **********************************************
-skipping: [52.200.5.159] => (item=ant initialize -Dtenant=master > /opt/Hybris-6.2.0/hybris/log/initialization.log 2>&1) 
-skipping: [52.200.5.159] => (item=. /opt/Hybris-6.2.0/hybris/bin/platform/setantenv.sh) 
-changed: [34.202.229.223] => (item=. /opt/Hybris-6.2.0/hybris/bin/platform/setantenv.sh)
-changed: [34.202.229.223] => (item=ant initialize -Dtenant=master > /opt/Hybris-6.2.0/hybris/log/initialization.log 2>&1)
+skipping: [54.91.169.134] => (item=. /opt/Hybris-6.2.0/hybris/bin/platform/setantenv.sh) 
+skipping: [54.91.169.134] => (item=ant initialize -Dtenant=master > /opt/Hybris-6.2.0/hybris/log/initialization.log 2>&1) 
+changed: [52.91.97.115] => (item=. /opt/Hybris-6.2.0/hybris/bin/platform/setantenv.sh)
+changed: [52.91.97.115] => (item=ant initialize -Dtenant=master > /opt/Hybris-6.2.0/hybris/log/initialization.log 2>&1)
 
 TASK [hybris : Chown Hybris Dir] ***********************************************
-ok: [34.202.229.223] => (item=/var/nfs/)
-ok: [34.202.229.223] => (item=/opt/Hybris-6.2.0)
-ok: [52.200.5.159] => (item=/var/nfs/)
-ok: [52.200.5.159] => (item=/opt/Hybris-6.2.0)
+ok: [52.91.97.115] => (item=/var/nfs/)
+ok: [52.91.97.115] => (item=/opt/Hybris-6.2.0)
+ok: [54.91.169.134] => (item=/var/nfs/)
+ok: [54.91.169.134] => (item=/opt/Hybris-6.2.0)
 
 TASK [hybris : Integrate Solr with Hybris] *************************************
-skipping: [52.200.5.159] => (item=ant importImpex -Dresource=/tmp/standaloneSolrServerConfig.impex > /opt/Hybris-6.2.0/hybris/log/solr_integration.log 2>&1) 
-skipping: [52.200.5.159] => (item=. /opt/Hybris-6.2.0/hybris/bin/platform/setantenv.sh) 
-changed: [34.202.229.223] => (item=. /opt/Hybris-6.2.0/hybris/bin/platform/setantenv.sh)
-changed: [34.202.229.223] => (item=ant importImpex -Dresource=/tmp/standaloneSolrServerConfig.impex > /opt/Hybris-6.2.0/hybris/log/solr_integration.log 2>&1)
+skipping: [54.91.169.134] => (item=. /opt/Hybris-6.2.0/hybris/bin/platform/setantenv.sh) 
+skipping: [54.91.169.134] => (item=ant importImpex -Dresource=/tmp/standaloneSolrServerConfig.impex > /opt/Hybris-6.2.0/hybris/log/solr_integration.log 2>&1) 
+changed: [52.91.97.115] => (item=. /opt/Hybris-6.2.0/hybris/bin/platform/setantenv.sh)
+changed: [52.91.97.115] => (item=ant importImpex -Dresource=/tmp/standaloneSolrServerConfig.impex > /opt/Hybris-6.2.0/hybris/log/solr_integration.log 2>&1)
 
 TASK [hybris : Chown Hybris Dir] ***********************************************
-ok: [34.202.229.223] => (item=/var/nfs/)
-ok: [34.202.229.223] => (item=/opt/Hybris-6.2.0)
-ok: [52.200.5.159] => (item=/var/nfs/)
-ok: [52.200.5.159] => (item=/opt/Hybris-6.2.0)
+ok: [52.91.97.115] => (item=/var/nfs/)
+ok: [52.91.97.115] => (item=/opt/Hybris-6.2.0)
+ok: [54.91.169.134] => (item=/var/nfs/)
+ok: [54.91.169.134] => (item=/opt/Hybris-6.2.0)
 
 RUNNING HANDLER [hybris : Start Hybris] ****************************************
-changed: [52.200.5.159]
-changed: [34.202.229.223]
+changed: [54.91.169.134]
+changed: [52.91.97.115]
 
 RUNNING HANDLER [hybris : Start NFS server] ************************************
-ok: [34.202.229.223]
+ok: [52.91.97.115]
 
 PLAY RECAP *********************************************************************
-34.202.229.223             : ok=38   changed=31   unreachable=0    failed=0   
-34.228.116.230             : ok=9    changed=8    unreachable=0    failed=0   
-52.200.5.159               : ok=34   changed=28   unreachable=0    failed=0   
-54.173.217.183             : ok=7    changed=6    unreachable=0    failed=0   
-54.242.70.142              : ok=21   changed=20   unreachable=0    failed=0   
+34.204.52.0                : ok=9    changed=8    unreachable=0    failed=0   
+52.91.97.115               : ok=38   changed=31   unreachable=0    failed=0   
+54.227.116.251             : ok=21   changed=20   unreachable=0    failed=0   
+54.84.221.126              : ok=7    changed=6    unreachable=0    failed=0   
+54.91.169.134              : ok=34   changed=28   unreachable=0    failed=0   
 
