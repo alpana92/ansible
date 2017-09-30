@@ -1,0 +1,28 @@
+---
+repo_server: 54.84.166.214
+java_version: java-8-oracle
+java_package: jdk-8u131-linux-x64.tgz
+hybris_version: Hybris-6.3.0
+hybris_package: hybris-commerce-suite-6.3.0.5.zip
+hybris_recipe: b2c_acc
+solr_package: solr-multicore-for-hybris-6.3.0.tgz
+db_driver: mysql-connector-java-5.1.33-bin.jar
+site_name: www.gceb2ch63-d.com
+domain_name: .hybrishosting.com
+default_shop: electronics
+servers_list:
+ - type: adm
+   name: gceb2ch63-d-gce-adm-001
+   ip: 104.196.208.26
+ - type: app
+   name: gceb2ch63-d-gce-app-001
+   ip: 35.190.128.91
+ - type: web
+   name: gceb2ch63-d-gce-web-001
+   ip: 35.196.217.109
+ - type: srch
+   name: gceb2ch63-d-gce-srch-001
+   ip: 35.196.183.161
+ - type: db
+   name: gceb2ch63-d-gce-db-001
+   ip: 35.196.121.141
