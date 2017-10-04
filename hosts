@@ -1,2 +1,17 @@
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+
 [local]
 127.0.0.1
+
+[yms-demo-aws-app-001]
+34.235.143.201
+
+[yms-demo-aws-app-001:vars]
+repo_server=54.84.166.214
+java_version=java-8-oracle
+java_package=jdk-8u131-linux-x64.tgz
+user_name=tomcat
+user_group=tomcat
+user_password=tomcat

@@ -127,7 +127,7 @@
               PATH: '{{ ansible_env.PATH }}:{{ hybris_ant }}/bin:{{ java_home }}'
   with_items:
             - '. {{ hybris_platform }}/setantenv.sh'
-            - 'ant initialize -Dtenant=master > {{ hybris_home }}/log/initialization.log 2>&1'
+            - 'ant initialize -Dtenant=master > {{ hybris_home }}/log/initialization-$(date +%Y-%m-%dT%H-%M-%S).log 2>&1'
   when: ansible_hostname == servers_list[0].name
   tags:
       - hybris_initialize
