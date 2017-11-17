@@ -1,5 +1,5 @@
 ---
-repo_server: 54.84.166.214
+repo_server: 54.152.16.177
 java_version: java-8-oracle
 java_package: jdk-8u131-linux-x64.tgz
 hybris_version: Hybris-6.3.0
@@ -7,19 +7,22 @@ hybris_package: hybris-commerce-suite-6.3.0.5.zip
 hybris_recipe: b2b_acc
 solr_package: solr-multicore-for-hybris-6.3.0.tgz
 db_driver: mysql-connector-java-5.1.33-bin.jar
-site_name: www.awsb2bh63-d.com
+site_name: www.awsclusteredb2b63-d.com
 domain_name: .hybrishosting.com
 default_shop: powertools
 servers_list:
+ - type: adm
+   name: awsclusteredb2b63-d-aws-adm-001
+   ip: 34.224.66.113
  - type: app
-   name: awsb2bh63-d-aws-app-001
-   ip: 52.204.1.168
+   name: awsclusteredb2b63-d-aws-app-001
+   ip: 54.158.28.33
  - type: web
-   name: awsb2bh63-d-aws-web-001
-   ip: 204.236.203.59
+   name: awsclusteredb2b63-d-aws-web-001
+   ip: 54.144.248.199
  - type: srch
-   name: awsb2bh63-d-aws-srch-001
-   ip: 54.89.204.159
+   name: awsclusteredb2b63-d-aws-srch-001
+   ip: 34.207.182.92
  - type: db
-   name: awsb2bh63-d-aws-db-001
-   ip: 34.227.60.222
+   name: awsclusteredb2b63-d-aws-db-001
+   ip: 52.23.158.144

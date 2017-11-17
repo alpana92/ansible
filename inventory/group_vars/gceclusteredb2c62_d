@@ -1,0 +1,28 @@
+---
+repo_server: 54.152.16.177
+java_version: java-8-oracle
+java_package: jdk-8u131-linux-x64.tgz
+hybris_version: Hybris-6.2.0
+hybris_package: hybris-commerce-suite-6.2.0.4.zip
+hybris_recipe: b2c_acc
+solr_package: solr-multicore-for-hybris-6.2.0.tgz
+db_driver: mysql-connector-java-5.1.33-bin.jar
+site_name: www.gceclusteredb2c62-d.com
+domain_name: .hybrishosting.com
+default_shop: electronics
+servers_list:
+ - type: adm
+   name: gceclusteredb2c62-d-gce-adm-001
+   ip: 35.185.122.187
+ - type: app
+   name: gceclusteredb2c62-d-gce-app-001
+   ip: 35.196.118.112
+ - type: web
+   name: gceclusteredb2c62-d-gce-web-001
+   ip: 35.196.238.201
+ - type: srch
+   name: gceclusteredb2c62-d-gce-srch-001
+   ip: 35.190.151.142
+ - type: db
+   name: gceclusteredb2c62-d-gce-db-001
+   ip: 35.185.124.220
