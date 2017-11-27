@@ -1,0 +1,25 @@
+---
+repo_server: 54.152.16.177
+java_version: java-8-oracle
+java_package: jdk-8u131-linux-x64.tgz
+hybris_version: Hybris-6.3.0
+hybris_package: hybris-commerce-suite-6.3.0.5.zip
+hybris_recipe: b2b_acc
+solr_package: solr-multicore-for-hybris-6.3.0.tgz
+db_driver: mysql-connector-java-5.1.33-bin.jar
+site_name: aws.dream.alpana.info
+domain_name: .hybrishosting.com
+default_shop: powertools
+servers_list:
+ - type: app
+   name: dream-d-aws-app-001
+   ip: 204.236.201.210
+ - type: web
+   name: dream-d-aws-web-001
+   ip: 54.210.44.101
+ - type: srch
+   name: dream-d-aws-srch-001
+   ip: 54.145.16.91
+ - type: db
+   name: dream-d-aws-db-001
+   ip: 34.228.44.255
